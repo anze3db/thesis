@@ -1,32 +1,4 @@
-\documentclass[a4paper,11pt]{article}
-\usepackage{a4wide}
-\usepackage{fullpage}
-\usepackage[utf8x]{inputenc}
-\usepackage[toc,page]{appendix}
-\usepackage[pdftex]{graphicx} % for figures
-\usepackage{setspace}
-\usepackage{color}
-\definecolor{light-gray}{gray}{0.95}
-\usepackage{listings} % for inclusion of Python code
-\usepackage{hyperref}
-\renewcommand{\baselinestretch}{1.2}
-
-\lstset{ % style for Python code, improve if needed
-language=Python,
-basicstyle=\footnotesize,
-basicstyle=\ttfamily\footnotesize\setstretch{1},
-backgroundcolor=\color{light-gray},
-}
-
-\title{Medplatformni razvoj grafično intenzivnih aplikacij - osnutek diplomske naloge}
-\author{Anže Pečar (63060257)}
-\date{\today}
-
-\begin{document}
-
-\maketitle
-
-\section{Motivacija}
+\chapter{Uvod}
 
 Mobilne naprave dandanes postajajo vse bolj vsakdanje. Pametni telefoni imajo v sebi več procesorske moči, kot namizni računalniki izpred parih let. Poleg procesorske moči praviloma vsebujejo tudi grafične procesne enote, ki jih razvijalci lahko izkoristijo za razvoj grafično intenzivnih aplikacij. Poleg telefonov pa so se pojavili tudi tablični račnalniki, ki imajo praviloma še boljše karakteristike kot pametni telefoni. 
 
@@ -57,22 +29,3 @@ V8-gl omogoča razvoj grafičnih aplikacij za namizne računalnike v jeziku Java
 \subsection{Unity\cite{unity}}
 
 Unity je razvojno okolje, ki nam omogoča razvoj grafično intenzivnih aplikacij in izvoz za različne platforme. Za Windows, OSX in Linux je izvoz brezplačen, za iOS in Android pa je avtorjem potrebno plačati.
-
-\begin{thebibliography}{1}
-\bibitem{canvas} Canvas Element W3C - http://www.w3.org/wiki/HTML/Elements/canvas
-
-\bibitem{webgl} WebGL - Khronos Goup - http://www.khronos.org/webgl/
-
-\bibitem{libgdx} libGDX - http://libgdx.badlogicgames.com/
-
-\bibitem{v8gl} V8-gl izvorna koda - https://github.com/philogb/v8-gl
-
-\bibitem{lycheejs} LeechyJS - http://martens.ms/lycheeJS/
-
-\bibitem{unity} Unity - http://unity3d.com/
-
-
-
-\end{thebibliography}
-
-\end{document}

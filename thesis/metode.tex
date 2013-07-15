@@ -1,0 +1,67 @@
+\chapter{Metode}
+
+\section{HTML5 (2D canvas)\cite{canvas}}
+
+Na področju spletnih tehnologij v obliki HTML5 je bilo v zadnjih letih narejeno veliko. S pojavom spletnega brskalnika Google Chrome se je začela prava tekma za hitrost. Spletne aplikacije, so za svoje delovanje začele uporabljati vedno več Javascripta in je bilo prvenstvenega pomena, da brskalnik lahko to kodo hitro izvede.
+
+Brskalniki so začeli med seboj začeli tekmovati, kdo lahko hitrejše izvaja Javascript kodo, rezlutate te tekme pa je bil, da so v roku parih let vsi novejši brskalniki sposobni hitro izvajati tudi bolj zahtevne Javascript aplikacije. 
+
+S pojavom pametnih telefonov in tablic so te tehnologije postale dostopne tudi na mobilnih platformah. Zaradi strojnih omejitev in predvsem življenske dobe baterij, so bili hitri in efektivni Javascript pogoni na mobilinih platformah mogoče še celo bolj pomembni kot na namiznih računalnikih.
+
+Rezultat vsega tega je, da lahko danes tako na namiznih računalnikih kot tudi na mobilnih napravah izvajamo zahtevne aplikacije napisane v programskem jeziku Javascript. 
+
+Programski jezik Javascript je pravzaprav edina skupna točka pametnih telefonov, tablic in namiznih računalnikov. Operacijski sistemi na telefonih in tablicah uporabljajo različne programske jezike za razvoj domorodnih aplikacij, vendar pa imajo prav vsi tudi naložen takšen ali dugačen brskalnik, v katerem lahko poganjamo spletne aplikacije napisane v Javascriptu.
+
+Prav vse mobilne platforme imajo tudi takšno ali drugačno implementacijo takoimenovanega elementa za spletni pogled (webview). Ta element nam omogoča prikaz določene spletne strani znotraj domorodne aplikacije. To nam omogoča, da svojo spletno aplikacijo zapakiramo v ovitek (wrapper), ki se potem iz vidika končnega uporabnika obnaša kot vse ostale domorodne aplikacije. Izjema je samo FirefoxOS, ki spletne aplikacije že tako ali tako smatra kot domorodne.
+
+Sodobni brskalniki nam za izris svojih oblik na zaslon poleg HTMLja in CSSa ponujajo tudi uporabo $platna$ (angl. canvas). 
+
+Element $platno$ se je pojavilo kot Appleov eksperiment znotraj Mac OSX Webkit komponente leta 2004. Uporabljen je bil v spletnem brskalniku Safari in za vtičnike v Dashboard aplikaciji. Leto kasneje so podporo $canvas$ elementu dodali tudi Gecko brskalniki, leta 2006 pa tudi spletni brskalnik Opera. Istega leta je tudi organizacija Web Hypertext Application Technology Working Group (WHATWG) element standardizirala. Internet Explorer je dodal domorodno podporo za $platno$ v verziji 8.
+
+$platno$ je danes dobro podprto v vseh modernih spletnih brskalnikih, tudi na vseh mobilnih napravah. Na določenih platformah in brskalnikih lahko uporablja tudi strojno pospeševanje, vendar se ta funkcija zaenkrat smatra še kot eksperimentalna in praviloma ni dostopna na mobilnih napravah. Zaradi tega dejstva $platno$ ni primerno za izrisovanje kompleksnih grafik na mobilnih napravah.
+
+Platno je namenjeno izrisovanje dvo dimenzionalnih oblik na zaslon. Programerju nudi preprost API za risanje raznih oblik ($drawRect$, $drawCircle$), risanje besedila ($fillText$), risanje poti ($moveTo$, $lineTo$), risanje slik ($drawImage$) in tudi risanje gradientov ($drawGradient$). Nudi pa tudi dostop do operacij nad posameznimi oblikami, kot so na primer premakni ($translate$), zavrti ($rotate$) itd. 
+
+Programer lahko aplikacijo s $platnom$ razvija iz udobja namiznega računalnika in se le malo ozira na delovanje na mobilnih platformah. Pri tem mora seveda biti pozoren na strojne omejitve mobilnih naprav. 
+
+Prednost uporabe dvodimenzionalnega platna je, da bo aplikacija delal v večini brskalnikov na večih platformah. Vendar pa je platno tudi dokaj omejeno s svojimi zmožnosti. Izrisovanje zahtevnejših slik lahko postane počasno, izrisovanje v treh dimenzijah pa zaradi slabe podpore strojnemu pospeševanju skoarjda nemogoče. 
+
+Kljub pomankljivostim lahko s pomočjo platna na preprost način napišemo grafično intenzivno aplikacijo, ki bo delala na večih platformah. 
+
+Grafično intenzivne aplikacije potrebujejo potrebujejo tudi procesirati vhod uporabnika. Za vhod je na namiznih računalnikih značilna kombinacija miška in tipkovnica. Na mobilnih napravah pa imamo navadno navoljo zgolj na dotik občutljiv zaslon. V javascriptu je napisanih kar nekaj knjižnic, ki nam pomagajo premostiti razlike med različnimi načini vnosa...
+
+\section{WebGL\cite{webgl}}
+
+WebGL je medplatformni API, uporabljen za delo s 3D grafiko znotraj spletnega brskalnika. Je kontekst $canvas$a, ki ima direkten dostop do grafične kartice preko GLSL jezika za pisanje senčilnikov (shaders). 
+
+WebGL temelji na OpenGL ES2.0 standardu, ki je na voljo na namiznih računalnikih in mobilnih napravah, kjer WebGL kot tak morebiti še ni podprt.
+
+WebGL je nastal iz eksperimentov Vladimir Vukićevića, zaposlenega pri Mozilli. Leta 2006 je začel delati na pospešenem "3D Canvasu za splet". Do konca leta 2007 sta tako Mozilla in Opera imeli delujočo implementacijo WebGL APIja. Leta 2009 je neprofitna organizacija Khronos ustanovila skupino za delo na WebGLu (WebGL Working Group). Člani skupine so bili tudi Apple, Google, Mozilla, Opera in drugi. Prva verzija speficikacije je bila izdana marca 2011.
+
+Mozilla je dodala podporo WebGLu v Firefoxu 4.0, Google v Chromu od verzije 9 naprej, Apple je dodal podporo v Safari 6.0, v Operi pa se je podpora pojavila v verziji 11, vendar je bila privzeto izklopljena. Internet Explorer je dodal podporo WebGLu šele v verziji 11, ki je v času pisanja na voljo samo kot predogled v okviru Windows 8.1  verzije za razvijalce.
+
+WebGL torej popravlja glavno pomankljivost  $2D\ canvas$a. Določeni spletni brskalniki namreč WebGLa sploh ne podpirajo (Internet Explorer), podpore še nimajo omogočene (Safari na iOS) ali pa je podpora še v beta stanju (Chrome na Androidu).
+
+WebGL uporablja API knjižnico OpenGL ES 2.0, ki je sicer dobro podprta na večini mobilnih naprav. Glavni problem WebGLa je varnost, saj je skorajda nemogoče narediti peskovnik (sandbox) za spletne strani, ki imajo direkten dostop do grafične kartice.
+
+\section{libgdx\cite{libgdx}}
+
+Libgdx je medplatformno ogrodje za razvoj grafičnih aplikacij, s poudarkom na računalniških igrah. Razvijalec svojo aplikacijo napiše v programskem jeziku Java, ogrodje pa potem poskrbi za izvoz napisane aplikacije v različne platforme. Podprte platforme so Windows, Linux in OSX ter Android in iOS, s pomočjo Google Web Toolkit (GWT) knjižnice pa je možen izvoz tudi za spletne brskalnike (WebGL).
+
+\section{playn\cite{playn}}
+
+\section{V8-gl\cite{v8gl} in LycheeJS\cite{lycheejs}}
+
+V8-gl omogoča razvoj grafičnih aplikacij za namizne računalnike v jeziku Javascript. Z malo abstrakcije je tako možno spletno aplikacijo pretvoriti v namizno aplikacijo. Delo lahko poenostavi knjižnica LycheeJS, cilj njenega avtorja pa je razširiti V8-gl tudi na Android in iOS.
+
+\section{Unity\cite{unity}}
+
+Unity je razvojno okolje, ki nam omogoča razvoj grafično intenzivnih aplikacij in izvoz za različne platforme. Za Windows, OSX in Linux je izvoz brezplačen, za iOS in Android pa je avtorjem potrebno plačati.
+
+\section{Parse\cite{parse}}
+
+Parse C\# stuff
+
+\section{C++}
+
+C++ dostopen povsod
