@@ -1,48 +1,113 @@
 \chapter{Metode}
 
-\section{HTML5 (2D canvas)\cite{canvas}}
+\section{Spletne aplikacije}
 
-Na področju spletnih tehnologij v obliki HTML5 je bilo v zadnjih letih narejeno veliko. S pojavom spletnega brskalnika Google Chrome se je začela prava tekma za hitrost. Spletne aplikacije, so za svoje delovanje začele uporabljati vedno več Javascripta in je bilo prvenstvenega pomena, da brskalnik lahko to kodo hitro izvede.
+Na področju spletnih tehnologij je bilo v zadnjih letih narejeno veliko. S pojavom spletnega brskalnika Google Chrome se je začela prava tekma za hitrost. Ker so spletne aplikacije postajale vedno bolj zahtevne, je bilo prvenstvenega pomena, da brskalniki postanejo hitri in odzivni.
 
-Brskalniki so začeli med seboj začeli tekmovati, kdo lahko hitrejše izvaja Javascript kodo, rezlutate te tekme pa je bil, da so v roku parih let vsi novejši brskalniki sposobni hitro izvajati tudi bolj zahtevne Javascript aplikacije. 
+Brskalniki so začeli med seboj začeli tekmovati, kdo lahko hitrejše izvaja Javascript kodo, rezultate te tekme pa je bil, da so v roku parih let vsi novejši brskalniki sposobni hitro izvajati tudi bolj zahtevne Javascript aplikacije. 
 
-S pojavom pametnih telefonov in tablic so te tehnologije postale dostopne tudi na mobilnih platformah. Zaradi strojnih omejitev in predvsem življenske dobe baterij, so bili hitri in efektivni Javascript pogoni na mobilinih platformah mogoče še celo bolj pomembni kot na namiznih računalnikih.
+S pojavom pametnih telefonov in tablic so spletne tehnologije postale dostopne tudi na mobilnih platformah. Zaradi strojnih omejitev in predvsem življenjske dobe baterij, so bili hitri in učinkoviti Javascript pogoni na mobilnih platformah celo bolj pomembni kot na namiznih računalnikih.
 
-Rezultat vsega tega je, da lahko danes tako na namiznih računalnikih kot tudi na mobilnih napravah izvajamo zahtevne aplikacije napisane v programskem jeziku Javascript. 
+Kot rezultat vseh prizadevanj za izboljšanje učinkovitosti in hitrosti izvajanja izvorne kode spletnih strani, lahko danes tako na namiznih računalnikih in mobilnih napravah izvajamo zahtevne aplikacije, ki se izvajajo znotraj spletnega brskalnika.
 
-Programski jezik Javascript je pravzaprav edina skupna točka pametnih telefonov, tablic in namiznih računalnikov. Operacijski sistemi na telefonih in tablicah uporabljajo različne programske jezike za razvoj domorodnih aplikacij, vendar pa imajo prav vsi tudi naložen takšen ali dugačen brskalnik, v katerem lahko poganjamo spletne aplikacije napisane v Javascriptu.
+Programski jezik Javascript je pravzaprav ena izmed redkih skupnih točk pametnih telefonov, tablic in namiznih računalnikov. Za razvoj domorodnih aplikacij za specifične naprave je potrebno uporabljati programski jezik, ki je določen s strani proizvajalca (avtorja mobilnega operacijskega sistema). Prav vse mobilne naprave pa imajo naložen brskalnik, v katerem lahko poganjamo spletne aplikacije napisane v Javascriptu.
 
-Prav vse mobilne platforme imajo tudi takšno ali drugačno implementacijo takoimenovanega elementa za spletni pogled (webview). Ta element nam omogoča prikaz določene spletne strani znotraj domorodne aplikacije. To nam omogoča, da svojo spletno aplikacijo zapakiramo v ovitek (wrapper), ki se potem iz vidika končnega uporabnika obnaša kot vse ostale domorodne aplikacije. Izjema je samo FirefoxOS, ki spletne aplikacije že tako ali tako smatra kot domorodne.
+Prav vse mobilne platforme imajo tudi takšno ali drugačno implementacijo tako imenovanega elementa za spletni pogled ($webview$). Ta element nam omogoča prikaz določene spletne strani znotraj domorodne aplikacije. Na ta način lahko spletno aplikacijo zapakiramo v ovitek (wrapper), ki se potem iz vidika končnega uporabnika obnaša slično domorodnim aplikacijam. Zanimiva izjema je Mozillin mobilni operacijski sistem FirefoxOS, ki spletne aplikacije smatra kot domorodne in ovitki niso potrebni.
+
+\subsection{2D platno}
 
 Sodobni brskalniki nam za izris svojih oblik na zaslon poleg HTMLja in CSSa ponujajo tudi uporabo $platna$ (angl. canvas). 
 
-Element $platno$ se je pojavilo kot Appleov eksperiment znotraj Mac OSX Webkit komponente leta 2004. Uporabljen je bil v spletnem brskalniku Safari in za vtičnike v Dashboard aplikaciji. Leto kasneje so podporo $canvas$ elementu dodali tudi Gecko brskalniki, leta 2006 pa tudi spletni brskalnik Opera. Istega leta je tudi organizacija Web Hypertext Application Technology Working Group (WHATWG) element standardizirala. Internet Explorer je dodal domorodno podporo za $platno$ v verziji 8.
+Element $platno$ se je pojavilo kot Appleov eksperiment znotraj Mac OSX Webkit komponente leta 2004. Uporabljen je bil v spletnem brskalniku Safari in za vtičnike v Dashboard aplikaciji. Leto kasneje so podporo $canvas$ elementu dodali tudi Gecko brskalniki, leta 2006 pa tudi spletni brskalnik Opera. Istega leta je organizacija Web Hypertext Application Technology Working Group (WHATWG) element standardizirala. Internet Explorer je dodal domorodno podporo za $platno$ v verziji 8.
 
-$platno$ je danes dobro podprto v vseh modernih spletnih brskalnikih, tudi na vseh mobilnih napravah. Na določenih platformah in brskalnikih lahko uporablja tudi strojno pospeševanje, vendar se ta funkcija zaenkrat smatra še kot eksperimentalna in praviloma ni dostopna na mobilnih napravah. Zaradi tega dejstva $platno$ ni primerno za izrisovanje kompleksnih grafik na mobilnih napravah.
+$platno$ je danes dobro podprto v vseh modernih spletnih brskalnikih, tudi na mobilnih napravah. Na določenih platformah in brskalnikih lahko uporablja tudi strojno pospeševanje, vendar se ta funkcija zaenkrat smatra še kot eksperimentalna in praviloma ni dostopna na mobilnih napravah. Zaradi tega dejstva obstajajo omejitve kompleksnosti, ki jih s $platno$m lahko dosežemo.
 
-Platno je namenjeno izrisovanje dvo dimenzionalnih oblik na zaslon. Programerju nudi preprost API za risanje raznih oblik ($drawRect$, $drawCircle$), risanje besedila ($fillText$), risanje poti ($moveTo$, $lineTo$), risanje slik ($drawImage$) in tudi risanje gradientov ($drawGradient$). Nudi pa tudi dostop do operacij nad posameznimi oblikami, kot so na primer premakni ($translate$), zavrti ($rotate$) itd. 
+% http://www.html5rocks.com/en/tutorials/canvas/performance/
 
-Programer lahko aplikacijo s $platnom$ razvija iz udobja namiznega računalnika in se le malo ozira na delovanje na mobilnih platformah. Pri tem mora seveda biti pozoren na strojne omejitve mobilnih naprav. 
+$Platno$ je namenjeno izrisovanju dvo dimenzionalnih oblik na zaslon. Programerju nudi preprost API za risanje raznih oblik ($fillRect$, $fillCircle$), risanje besedila ($fillText$), risanje poti ($moveTo$, $lineTo$), risanje slik ($drawImage$) in tudi risanje gradientov ($drawGradient$). Nudi tudi dostop do operacij nad posameznimi oblikami, kot so na primer premakni ($translate$), zavrti ($rotate$) itd. 
 
-Prednost uporabe dvodimenzionalnega platna je, da bo aplikacija delal v večini brskalnikov na večih platformah. Vendar pa je platno tudi dokaj omejeno s svojimi zmožnosti. Izrisovanje zahtevnejših slik lahko postane počasno, izrisovanje v treh dimenzijah pa zaradi slabe podpore strojnemu pospeševanju skoarjda nemogoče. 
+Programer lahko aplikacijo s $platnom$ razvija iz udobja namiznega računalnika. Vmesne rezultate dela lahko preverja v svojem spletnem brskalniku in šele nato prenese aplikacijo na mobilno napravo. Pri razvijanju aplikacije na namiznem računalniku mora biti programer še posebaj pozoren na strojne omejitve mobilnih naprav. 
 
-Kljub pomankljivostim lahko s pomočjo platna na preprost način napišemo grafično intenzivno aplikacijo, ki bo delala na večih platformah. 
+Prednost uporabe dvodimenzionalnega platna je, v dobri medplatformni podpori tako na namiznih računalnikih kot tudi na mobilnih napravah. Cena dobro podprtosti pa so omejene zmožnosti. Izrisovanje zahtevnejših slik lahko postane počasno, izrisovanje v treh dimenzijah pa zaradi slabe podpore strojnemu pospeševanju skorajda nemogoče. 
 
-Grafično intenzivne aplikacije potrebujejo potrebujejo tudi procesirati vhod uporabnika. Za vhod je na namiznih računalnikih značilna kombinacija miška in tipkovnica. Na mobilnih napravah pa imamo navadno navoljo zgolj na dotik občutljiv zaslon. V javascriptu je napisanih kar nekaj knjižnic, ki nam pomagajo premostiti razlike med različnimi načini vnosa...
+Kljub pomanjkljivostim lahko s pomočjo platna na preprost način napišemo grafično intenzivno aplikacijo, ki bo delala na več platformah. 
 
-\section{WebGL\cite{webgl}}
+\subsubsection{Strojno pospeševanje}
+
+2D $platno$ na določenih konfiguracijah omogoča tudi strojno pospeševanje. Z omogočenim strojnim pospeševanjem centralna procesna enota prenese nekaj svojega dela na grafično procesno enoto. Na ta način se lahko hitrost izrisovanja močno poveča.
+
+Strojno pospešeno $platno$ zaenkrat še ni povsod na voljo in zato na prednosti, ki jih prenaša, še ne gre računati. Brskalnik Google Chrome je na primer dodal podporo v verziji 18 (Marec 2012), vendar strojno pospeševanje še vedno ni povsod (Linux, Android).
+
+\subsection{3D platno WebGL}
 
 WebGL je medplatformni API, uporabljen za delo s 3D grafiko znotraj spletnega brskalnika. Je kontekst $canvas$a, ki ima direkten dostop do grafične kartice preko GLSL jezika za pisanje senčilnikov (shaders). 
 
 WebGL temelji na OpenGL ES2.0 standardu, ki je na voljo na namiznih računalnikih in mobilnih napravah, kjer WebGL kot tak morebiti še ni podprt.
 
-WebGL je nastal iz eksperimentov Vladimir Vukićevića, zaposlenega pri Mozilli. Leta 2006 je začel delati na pospešenem "3D Canvasu za splet". Do konca leta 2007 sta tako Mozilla in Opera imeli delujočo implementacijo WebGL APIja. Leta 2009 je neprofitna organizacija Khronos ustanovila skupino za delo na WebGLu (WebGL Working Group). Člani skupine so bili tudi Apple, Google, Mozilla, Opera in drugi. Prva verzija speficikacije je bila izdana marca 2011.
+WebGL je nastal iz eksperimentov Vladimir Vukićevića, zaposlenega pri Mozilli. Leta 2006 je začel delati na pospešenem "3D platnu za splet". Do konca leta 2007 sta tako Mozilla kot Opera imeli delujočo implementacijo WebGL APIja. Leta 2009 je neprofitna organizacija Khronos ustanovila skupino za delo na WebGLu (WebGL Working Group). Člani skupine so bili tudi Apple, Google, Mozilla, Opera in drugi. Prva verzija specifikacije je bila izdana marca 2011.
 
-Mozilla je dodala podporo WebGLu v Firefoxu 4.0, Google v Chromu od verzije 9 naprej, Apple je dodal podporo v Safari 6.0, v Operi pa se je podpora pojavila v verziji 11, vendar je bila privzeto izklopljena. Internet Explorer je dodal podporo WebGLu šele v verziji 11, ki je v času pisanja na voljo samo kot predogled v okviru Windows 8.1  verzije za razvijalce.
+Mozilla je dodala podporo WebGLu v Firefoxu 4.0, Google v Chromu od verzije 9 naprej, Apple je dodal podporo v Safari 6.0, v Operi pa se je podpora pojavila v verziji 11, vendar je bila privzeto izklopljena. Internet Explorer je dodal podporo WebGLu šele v verziji 11, ki je v času pisanja na voljo samo kot predogled v okviru Windows 8.1 verzije za razvijalce.
 
-WebGL torej popravlja glavno pomankljivost  $2D\ canvas$a. Določeni spletni brskalniki namreč WebGLa sploh ne podpirajo (Internet Explorer), podpore še nimajo omogočene (Safari na iOS) ali pa je podpora še v beta stanju (Chrome na Androidu).
+Na mobilnih brskalnikih je stanje še slabše. Večina mobilnih brskalnikov še nima vgrajene podpore (Safari na iOS) ali pa je le ta še v fazi preizkušanja (Chrome na Android). WebGL je najbolje podprt v mobilni različici brskalnika Firefox.
 
-WebGL uporablja API knjižnico OpenGL ES 2.0, ki je sicer dobro podprta na večini mobilnih naprav. Glavni problem WebGLa je varnost, saj je skorajda nemogoče narediti peskovnik (sandbox) za spletne strani, ki imajo direkten dostop do grafične kartice.
+WebGL, za razliko od 2D platna, brez strojne podpore sploh ne deluje. 
+
+WebGL kompatibilnost ima svoje probleme tudi na namiznih računalnikih, saj na določenih operacijskih sistemih z določenim brskalniki še vseeno ne deluje. Problem je, da je še vedno veliko gonilnikov za grafične kartice na črni listi, ki ima delovanje privzeto izklopljeno. Na črni listi so gonilniki, ki po mnenju avtorjev brskalnikov še niso dovolj stabilni oziroma imajo pri prikazovanju WebGL vsebin probleme. Omejitve sicer lahko zaobidemo s postavitvijo posebne zastavice ob zagonu brskalnika. 
+
+Razvijalci brskalnikov kot glavni razlog za slabo podprtost WebGLa navajajo probleme z varnostjo. Narediti peskovnik (sandbox) za spletno stran je zelo težko, če le ta za svoje delovanje potrebuje direkten dostop do grafične kartice.
+
+\subsubsection{Razvoj WebGL aplikacije}
+
+Razvoj aplikacij z uporabo WebGLa je tudi bolj zahtevno za programerja, kot razvoj aplikacij z 2D platnom. WebGL API namreč ne omogoča preprostih funkcij za risanje na zaslon in tudi za izris najbolj osnovnih oblik je potrebno nastaviti pravilen kontekst in napisati, prevesti ter povezati dva programa za senčilnike. 
+
+Senčilniki so programi, ki se izvajajo na grafični procesni enoti. WebGL definira dve vrsti senčilnih programov - vertex in fragment. Prvi skrbi za pozicijo vsakega oglišča, ki ga izrišemo na na zaslonu, drugi pa za barvo vsakega fragmenta. Pisanje senčilnikov poteka v programskem jeziku GLSL, ki je podzvrst programskega jezika C. Nabor ukazov, ki je na voljo, je v primerjavi s programskim jezikom ANSI-C sicer omejen, vendar imamo dodane posebne ukaze za lažje delo z vektorji in matrikami.
+
+Podobno kot za 2D platno velja tudi za WebGL, aplikacijo razvijamo na namiznem računalniku in po potrebi preizkušamo kompatibilnost na mobilnih napravah.
+
+\subsubsection{Medplatformnost}
+
+V času pisanja WebGL še ni dobra izbira za medplatformni razvoj aplikacij. Vendar vse smernice kažejo v dejstvo, da se bo podpora v prihodnosti precej izboljšala. Dober indikator za to je tudi vključitev podpore v Internet Explorer 11, kljub dejstvu, da sta bila skupina Khronos in Microsoft v nenehni tekmovalnosti, Khronos s svojim OpenGL APIjem, Microsoft pa z lastnim DirectX sistemom.
+
+Za razliko od zaprtih sistemov, kot je na primer Flash, ki mu podprtost pada (na iOSu ni bil podprt nikoli, na Androidu pa v zadnjih verzijah tudi uradno ni več podprt), je WebGL trenutno na dobri poti, da postane primerno orodje za razvoj medplatformnih aplikacij.
+
+\subsection{Zvok}
+
+Aplikacije napisane v 2D platnu in aplikacije pisane v WebGLu dostopajo do zvoka na enak način - to zato, ker je izrisovanje povsem ločeno od ostalih komponent.
+
+HTML5 definira dokaj preprost API za predvajanje zvočnih datotek znotraj brskalnika. Programer ima na voljo ukaze za predvajanje zvoka, premikanje po zvočni datoteki in nastavljanja glasnosti zvočne datoteke, ne pa tudi kakšnih bolj naprednih ukazov kot spreminjanje frekvence...
+
+Za bolj napredne funkcije je potrebno posesti po drugih metodah. Ena izmed najbolj uporabnih je uporaba Flash predvajalnika za predvajanje zvoka. S tem pridobimo dodatne funkcije za delo z zvokom, vendar se zaradi vse slabše podpore Flash predvajalnikov na mobilnih podporah tudi lahko precej omejimo. 
+
+Uporabimo lahko tudi knjižnico, ki nam za predvajanje zvoka ponudi svoj lasten API in potem zvoke predvaja na najboljši način glede na dano platformo, na kateri se potem aplikacija izvaja.
+
+\subsection{Zaznavanje vhoda}
+
+Grafično intenzivne aplikacije potrebujejo potrebujejo tudi procesirati vhod uporabnika. Za vhod je na namiznih računalnikih značilna kombinacija miška in tipkovnica. Na mobilnih napravah pa imamo navadno na voljo zgolj na dotik občutljiv zaslon. V javascriptu je napisanih kar nekaj knjižnic, ki nam pomagajo premostiti razlike med različnimi načini vnosa...
+
+\subsection{Primernost programskega jezika JavaScript}
+
+Za razvoj grafično zahtevnih aplikacij, je hitrost izvajanja programa bistvenega pomena. Za ta namen se praviloma uporablja statično tipizirane jezike in ročno sproščanje pomnilnika (garbage collection). V industriji se za te namene najbolj uporablja programski jezik C++.
+
+Kljub vsem izboljšavam in pohitritvam, ki jih danes najdemo v modernih spletnih brskalnikih, je hitrost izvajanja programa napisanega v programskem jeziku Javascript, še vedno bistveno počasnejša. Razni testi kajžejo, da je ekvivalenten program napisan v programskem jeziku C++ lahko tudi do 5 krat hitrejši.
+
+S pomočjo tehnologij, kot je ASM.js [link na del diplome o ASM.js] je možno Javascript program pohitriti, vendar je kljub temu povprečna hitrost izvajanja za dvakrat počasnejša od ekvivalentnega C++ programa.
+
+Gledano izključno iz vidika hitrosti izvajanja, bo Javascript najbrž vedno manj primeren od klasičnih jezikov.
+
+\section{Spletne aplikacije z V8-gl}
+
+V8-gl je knjižnica, ki omogoča razvoj grafičnih aplikacij za namizne računalnike v jeziku Javascript. Knjižnica programerju nudi Javascript vmesnik do OpenGL APIja. Njen glavni cilj je narediti bogato orodje, ki bo olajšalo delo z 2D in 3D grafiko.
+
+Knjižnica je trenutno še globoko v razvoju in zaenkrat stabilna verzija še ni bila izdana. OpenGL ES2.0 povezave so že delujoče in na voljo za uporabo. To pomeni, da lahko delujočo WebGL prenesemo na V8-gl in se znebimo odvisnosti od brskalnika. Še vedno veljajo enake omejitve s hitrostjo izvajanja, kot veljajo znotraj brskalnika, vendar nam ni potrebno več skrbeti glede delovanja v različnih brskalnikih.
+
+Delo poteka tudi na prevedbi knjižnice tudi na sistema iOS in Android. To bi omogočilo bolj konsistentno medplatformno delovanje aplikacije po več platformah, kot ga danes ponujajo različni spletni brskalniki.
+
+\subsection{LycheeJS}
+
+Najbolj perspektivna uporaba V8-gl knjižnice je trenutno v projektu LycheeJS. LycheeJS je pogon v Javascriptu, ki nam omogoča pisanje aplikacij za HTML5 platno, WebGL ali celo domoroden OpenGL ES. Aplikacijo lahko tako objavimo kot spletno aplikacijo ali pa kot Android aplikacijo. Dela se tudi na podpori za iOS.
+
+Z malo abstrakcije je tako možno spletno aplikacijo pretvoriti v namizno aplikacijo. Delo lahko poenostavi knjižnica LycheeJS, cilj njenega avtorja pa je razširiti V8-gl tudi na Android in iOS.
+
 
 \section{libgdx\cite{libgdx}}
 
@@ -50,9 +115,6 @@ Libgdx je medplatformno ogrodje za razvoj grafičnih aplikacij, s poudarkom na r
 
 \section{playn\cite{playn}}
 
-\section{V8-gl\cite{v8gl} in LycheeJS\cite{lycheejs}}
-
-V8-gl omogoča razvoj grafičnih aplikacij za namizne računalnike v jeziku Javascript. Z malo abstrakcije je tako možno spletno aplikacijo pretvoriti v namizno aplikacijo. Delo lahko poenostavi knjižnica LycheeJS, cilj njenega avtorja pa je razširiti V8-gl tudi na Android in iOS.
 
 \section{Unity\cite{unity}}
 
@@ -65,3 +127,7 @@ Parse C\# stuff
 \section{C++}
 
 C++ dostopen povsod
+
+\section{Programski jezik Haxe}
+
+\section{Flash}
