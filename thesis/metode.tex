@@ -104,19 +104,78 @@ Delo poteka tudi na prevedbi knjižnice tudi na sistema iOS in Android. To bi om
 
 \subsection{LycheeJS}
 
-Najbolj perspektivna uporaba V8-gl knjižnice je trenutno v projektu LycheeJS. LycheeJS je pogon v Javascriptu, ki nam omogoča pisanje aplikacij za HTML5 platno, WebGL ali celo domoroden OpenGL ES. Aplikacijo lahko tako objavimo kot spletno aplikacijo ali pa kot Android aplikacijo. Dela se tudi na podpori za iOS.
+Najbolj perspektivna uporaba V8-gl knjižnice je trenutno projekt LycheeJS. LycheeJS je pogon v Javascriptu, ki teoretično lahko teče na vseh okoljih kjer je na voljo Javascript. LeechJS podpira vse moderne brskalnike na namizju (Firefox, Chrome, Opera, Safari in Internet Explorer) in tudi na mobilnih brskalnikih (WebKit, Firefox, Chrome na Androidu in Mobile Safari). 
 
-Z malo abstrakcije je tako možno spletno aplikacijo pretvoriti v namizno aplikacijo. Delo lahko poenostavi knjižnica LycheeJS, cilj njenega avtorja pa je razširiti V8-gl tudi na Android in iOS.
+Ker se LycheeJS zanaša na V8-gl, veljajo enake omejitve pri uporabi OpenGL ES2.0 APIja kot tudi pri V8-gl. LycheeJS je zgolj ogrodje zgrajeno nad V8-glom, ki programerju omogoči lažje delo na svoji aplikaciji. Med prednostmi, ki jih LycheeJS prinaša so enoten vmesnik za detekcijo vhoda uporabnikov, kot tudi enoten vmesnik za predvajanje zvočnih datotek. Poleg tega ima LycheeJS vgrajena tudi orodja za pakiranje aplikacij, tako da brez večjega truda svojo spletno aplikacijo zapakiramo za različne platforme. Trenutno podprte platforme so spletne aplikacije, vtičniki za brskalnik Google Chrome ter Android aplikacija.
 
+\section{xamarin}
+
+Xamarin nam omogoča, da našo aplikacijo napišemo v programskem jeziku C\#, do APIjev domorodnih platform pa dostopamo. C\# prevajalnik našemu programu doda .NET runtime (Mono) in proizvede izvedljiv ARM program, ki je lahko zapakiran kot iOS aplikacija ali pa kot Android aplikacija.
+
+Na ta način lahko Android in iOS aplikacije delijo izvorno kodo. 
+
+Xamarin kodo prevede v domorodno izvedljivo binarno datoteko za posamezno platformo. Izvajanje te domorodne je hitro in ni vidnih vplivov na hitrost izvajanja. Koda nam sicer prinese dodatnih 2.5MB podpisa...
+
+Kako točno Xamarin C\# prevede v domorodno aplikacijo ni dostopno, saj je to del njihovega zaprtega sistema. 
+
+Xamarin temelji na odprtokodni verziji .NET ogrodja - Mono, ki deluje na večini platform, ki so v uporabi danes (Linux, Unix, FreeBSD, MacOSX). Za iOS Xamarinov lasten AOT (ahead of time) prevajalnik prevede C\# kodo v ARM zbirni jezik. Na operacijskem sistemu Android pa xamarinov prevajalnik prevede kodo v vmesni jezik (IL), ki se nato prevede ob pravem času (JIT), ko se aplikacija zažene. V obeh primerih Xamarin poskrbi za alociranje spomina, memory allocation, garbage collection, underlying platform interop, etc. 
 
 \section{libgdx\cite{libgdx}}
 
-Libgdx je medplatformno ogrodje za razvoj grafičnih aplikacij, s poudarkom na računalniških igrah. Razvijalec svojo aplikacijo napiše v programskem jeziku Java, ogrodje pa potem poskrbi za izvoz napisane aplikacije v različne platforme. Podprte platforme so Windows, Linux in OSX ter Android in iOS, s pomočjo Google Web Toolkit (GWT) knjižnice pa je možen izvoz tudi za spletne brskalnike (WebGL).
+Libgdx je ogrodje za medplatformni razvoj grafičnih aplikacij napisano v Javi. Knjižnica abstrahira razlike med namiznimi aplikacijami, Androidom, iOSom in HTML5 ter gradi na odprtih standardih, kot je OpenGL ES/WebGL.
+
+LibGDX omogoča hitro prototipiranje, saj je razvoj mobilnih aplikacij možen na namizju. V pravilnost delovanja aplikacije se lahko prepričamo iz namiznega računalnika in šele nato zgradimo paket. 
+
+Prednost tega pristopa so krajši nalagalni časi aplikacije. Grajenje iOS ali Android paketa traja nekaj časa (Dex, package), potem pa je potrebno aplikacijo preko USB kabla prenesti na dejansko napravo. Razvoj grafično intenzivnih aplikacij je z uporabo Android emulatorja na primer skorajda nemogoče, saj le ta niti ne podpira OpenGL ES2.0. Vsi ti koraki na sodobnem računalniku sicer ne trajajo več kot eno minuto, ampak v primerjavi z poganjanjem .jar datoteke iz namizja (manj kot 5 sekund) prednost razvoja iz namizja precej zniža čas, ki je potreben za razvoj aplikacije.
+
+Poleg hitrejšega mrzlega zagona aplikacije je razvoj na namizju hitrejši tudi zaradi vročega izmenjevanje kode (code hot swapping). Vroče izmenjevanje kode je proces, ko del kode, ki teče na JVM zamenjamo z novim delom kode med tem ko aplikacija teče. S tem se izognemo ponovnemu zaganjanju aplikacije. Dodatna prednost je, da nam ni potrebno na ponovno nastavljati stanja, v katerem se je aplikacija nahajala preden smo naredili spremembo kode. Vroče izmenjevanje je instantno in programer dobi takojšen odziv na spremembe, ki jih je naredil, kar precej izboljša čas, ki je potreben za razvoj aplikacije.
+
+Določeni deli ogrodja so bili napisani s pomočjo JNI (Java Native Interface, Javin domoroden vmesnik).
+
+LibGDX omogoča razvoj aplikacij za Widows, Linux, Mac OS X, Android 1.5+, iOS, Java Applet, Javascript /WebGL. 
+
+TODO: Za razvoj iOS je potrebna Xamarin. LibGDX s pomočjo LLVM Java kodo spremeni v C\# kompatibilno. Ta C\# koda pa potem xamarin prevajalnik prevede v domorodno ARM kodo.
+
+Projekt LibGDX je odprtokoden in dostopen na internetu.
 
 \section{playn\cite{playn}}
 
+PlayN je ogrodje za razvoj grafično intenzivnih aplikacij na večih platformah. Podprte platforme so namizni računalniki (Java), iOS, Android, HTML5 in Flash.
+
+Vmesnik je napisan v programskem jeziku Java, na voljo pa imamo vse prednosti, ki smo jih omenili že pri uporabi LibGDX. Našo aplikacijo lahko razvijamo na namiznem računalniku, kjer lahko uporabljamo tudi vroče izmenjavanje kode. 
+
+Za izvoz na različne platforme lahko uporabimo ali orodje Ant ali pa Maven. Večjih razlik med obema orodjema ni, oba pa omogočata preprost način grajenje domorodnih paketov za Android.
+
+\subsection{GWT}
+
+Izvoz aplikacije v HTML5 je mogoč z uporabo orodja GWT (Google Web Toolkit), ki je kot navaja tudi ime orodja, plod dela zaposlenih pri podjetju Google. GWT je razvijalsko orodje, za grajenje kompleksnih aplikacij, ki tečejo v brskalniku. Celoten paket vsebuje Java API knjižnico, prevajalnik in strežnik za razvijanje aplikacije.
+
+GWT program napisan v jeziku Java prevede v optimiziran Javascript. Prevajalnik upošteva prednosti in slabosti posameznih brskalnikov in optimizira za vsak brskalnik posebej. Poleg brskalnikov za namizje je prevedeni Javascript optimiziran tudi za mobilne brskalnike, tako da aplikacija napisana s pomočjo GWTja deluje hitreje tudi na mobilnih napravah.
+
+Poleg specifičnih optimizacij za različne brskalnike prevajalnik tudi odstrani mrtvo kodo, optimizira Stringe, in-lining methods.
+
+
+
+\subsection{iOS}
+
+Tudi grajenje iOS paketa poteka na podoben način kot pri LibGDX, z uporabo Xamarin licence.
+
+\subsection{Primerjava z LibGDX}
+
+Razlika med LibGDX in PlayN se pokaže predvsem v uporabi vmesnikov. PlayN podpira nekoliko več platform in 2D API je nekoliko lažji za uporabo. Delo z 3D apijem (in dostop do domorodnih OpenGL ES funkcij) pa je precej lažje z uporabo LibGDX knjižnice. 
+
+Projekt je odprtokoden razvijajo pa ga zaposleni pri Googlu.
 
 \section{Unity\cite{unity}}
+
+Unity3D je orodje za izdelovanje medplatformnih grafično intenzivnih aplikacij. Poleg mobilnih naprav (iOS, Android, BlackBerry, WinPhone 8) ter vseh glavnih namiznih operacijskih sistemov (Windows, MacOS, Linux), orodje omogoča izdelovanje aplikacij tudi za igralne konzole (Xbox is PS3). Orodje je sestavljeno iz dveh glavnih delov - engine in integrirano okolje za razvijanje.
+
+\subsection{pogon}
+
+Za risanje na zaslon Unity uporablja grafični vmesnik Direct3D (na platformi Windows in Xbox), OpenGL ES (iOS, Android). 
+
+\subsection{integrirano okolje za razvijanje} 
+
 
 Unity je razvojno okolje, ki nam omogoča razvoj grafično intenzivnih aplikacij in izvoz za različne platforme. Za Windows, OSX in Linux je izvoz brezplačen, za iOS in Android pa je avtorjem potrebno plačati.
 
@@ -129,5 +188,13 @@ Parse C\# stuff
 C++ dostopen povsod
 
 \section{Programski jezik Haxe}
+\section{Ogre}
+!!!
+\section{Marmelade}
+% http://www.madewithmarmalade.com/
+\section{Monogame}
 
 \section{Flash}
+
+\section{QT}
+% http://doc-snapshot.qt-project.org/qt5-stable/qtdoc/windowsce-opengl.html
