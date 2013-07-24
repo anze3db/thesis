@@ -1,16 +1,18 @@
 \chapter{Pregled platform}
 
-Danes lahko grafično intenzivne aplikacije poganjamo na ogromnem naboru različnih naprav. Grafično pospeševanje izrisovanja 3D objektov, ki je bilo še pred kratkim omejeno na namizne računalnike in konzole, je sedaj možno tudi na mobilnih telefonih in grafičnih tablicah. Razvoj aplikacij za mobilne platforme je nekoliko bolj zahteven, saj moramo poleg okrnjenega nabora ukazov in slabše strojne zmogljivosti, paziti tudi na porabo baterije.
+Danes lahko grafično intenzivne aplikacije poganjamo na ogromnem naboru različnih naprav. Grafično pospeševanje izrisovanja 3D objektov, ki je bilo še pred kratkim omejeno na namizne računalnike in še pred tem na drage delovne postaje, je sedaj možno tudi na mobilnih telefonih in grafičnih tablicah. Razvoj aplikacij za mobilne platforme je nekoliko bolj zahteven, saj moramo poleg okrnjenega nabora ukazov in slabše strojne zmogljivosti, paziti tudi na porabo baterije.
 
-V zadnjem letu so postale zanimivi računalniki s čipom na eni sami ploščici (prevedi single-board computer). Tak primer je Rasperry Pi, računalnik, ki je bil razvit s namenom promoviranja učenja osnovnih temeljev računalništva. Tudi majhni računalniki kot je omenjeni Raspberry Pi imajo namenski grafični procesor, ki omogoča izvajanje grafično bogatih aplikacij.
+Na baterijo moramo paziti tudi pri prenosnih računalnikih. Ti so po zmogljivostim podobni namiznim računalnikom in uporabljajo enako (ali vsaj podobno) arhitekturo za centralno procesno enoto.
 
 \section{Namizni in prenosni računalniki}
 
-Največ svobode pri razvoju grafično intenzivnih aplikacij je na voljo na namiznih računalnikih. Ti imajo na voljo najboljšo možno strojno oprema in tudi operacijski sistemi so zreli in dovršeni, saj so se razvijali že več kot deset let. Namizni računalniki nimajo tako strogih omejitev z velikostjo, kot mobilne naprave. Prav nič presenetljivo ni torej, da so grafično intenzivne aplikacije na tej platformi najbolj domače. 
+Največ svobode pri razvoju grafično intenzivnih aplikacij je na voljo na namiznih računalnikih. Ti imajo na voljo najboljšo možno strojno opremo in tudi operacijski sistemi so zreli in dovršeni, saj so v razvoju že več deset let. Namizni računalniki nimajo tako strogih omejitev z velikostjo, kot mobilne naprave. Prav nič presenetljivo ni torej, da so grafično intenzivne aplikacije na tej platformi najbolj domače. 
 
-Namizni računalniki so bili zelo dolgo edina platforma, ki je bila zmožna poganjati grafično intenzivne aplikacije. S pojavom namenskih grafičnih čipov (3Dfx), je prvič postalo mogoče razvijati aplikacije izrisovanje kompleksnejših grafičnih oblik na zaslonu. S pojavom grafičnih kartic se je zmanjšala obremenitev centralne procesne enote. Vse zahtevne operacije\footnote{operacije s plavajočo vejico...} so se sedaj izvajale na ločeni enoti. 
+Namizni računalniki uporabljajo drugačno arhitekturo za centralno procesno enoto. Procesorji v namiznih računalnikih so zgrajeni s CISC (Intel, AMD), medtem ko mobilne večinoma uporabljajo RISC arhitekturo in procesorje podjetja ARM in nVidia. 
 
-Na namiznih računalnikih sta se v začetku 90ih let pojavili dve knjižnici za delo s 3D grafiko. OpenGL in DirectX. Obe ponujata programski vmesnik za komunikacijo z grafično procesno enoto, vendar je precejšna razlika med njima.
+Namizni računalniki so bili zelo dolgo edina platforma, na kateri je bilo možno poganjati grafično intenzivne aplikacije. S pojavom namenskih grafičnih čipov (grafične kartice na začetku), je prvič postalo mogoče razvijati aplikacije izrisovanje kompleksnejših grafičnih oblik na zaslonu. S pojavom grafičnih kartic se je zmanjšala obremenitev centralne procesne enote. Vse zahtevne operacije\footnote{operacije s plavajočo vejico...} se danes izvajajo na grafičnih procesnih enotah, ki so narejene z visoko stopnjo paralelizma. 
+
+Na namiznih računalnikih sta se v začetku 90ih let pojavili dve knjižnici za delo s 3D grafiko. OpenGL in Direct3D. Obe ponujata programski vmesnik za komunikacijo z grafično procesno enoto, vendar so razlike med njima precejšne.
 
 % http://en.wikipedia.org/wiki/Comparison_of_OpenGL_and_Direct3D
 
@@ -18,34 +20,28 @@ Na namiznih računalnikih sta se v začetku 90ih let pojavili dve knjižnici za 
 
 \subsection{OpenGL}
 
-OpenGL je odprt standard, ki ga razvija skupina Khronos. Na voljo je na večini operacijskih sistemih (Windows, Mac OSX in Linux). 
+OpenGL je odprt standard, ki ga razvija skupina Khronos. Na voljo je na večini operacijskih sistemih (Windows, Mac OSX in Linux).
 
-Tekom let so izšle 4 verzije. Podpora za programiranje grafičnega vhoda (shaderji) so postali podprti v verziji 2.0, ko je bila narejena tudi totalna prenova celotnega sistema. Iz te prenove se je nato razvila tudi mobilna inačica OpenGL ES 2.0.  
+Programski vmesnik se je na začetku uporabljal predvsem za profesionalne aplikacije, kot je na primer AutoCAD in simulacije. Šele kasneje se je programski vmesnik razvil, do te mere, da je bil uporaben tudi za druge namene.
+
+Tekom let so izšle 4 verzije. Podpora za programiranje grafičnega vhoda (shaderji) so postali podprti v verziji 3.0, ko je bila narejena tudi totalna prenova celotnega sistema. Iz te prenove se je nato razvila tudi mobilna inačica OpenGL ES 2.0.  
 
 OpenGL je implementiran v gonilniku za zaslon in vsak proizvajalec grafičnih kartic mora v gonilnike za grafično kartico dodati podporo. Problem s tem principom je, da se vmesnik nekoliko razlikuje med različnimi proizvajalci grafičnih kartic. Tudi programski jezik za pisanje shader programov in njihovi prevajalniki se lahko med seboj razlikujejo.
 
-OpenGL se veliko uporablja za profesionalne aplikacije, kot so programi za grafično modeliranje (Maya) in programi za računalniške simulacije...
+Dolgo časa so bile tudi razširitve, ki so bile na voljo samo na določenih grafičnih karticah. Proizvajalci grafičnih kartic so na ta način želeli izkazati superiornost, saj so te pritikline navadno bile kot dodaten sladkor pri prikazovanju. To je ustvarilo resen problem, kjer so razvijalci morali prilagajati kodo aplikacij glede na posamezne grafične kartice.
+
 
 \subsection{Direct3D}
 
-Direct3D je bil Microsoftov odgovor na OpenGL. Direct3D je zaprt programski vmesnik, popolnoma v lasti Microsofta. Programski vmesnik je uradno podprt samo na operacijskih sistemih Windows in na Microsoftovi igralni konzoli Xbox. Na drugih platformah je možno Direct3D aplikacije poganjati samo z uporabo posebne virtualizacijske plasti. Na Linuxu to virtualizacijsko plast ponuja orodje Wine, ki pa še vedno ne podpira Direct3D vmesnika v celoti.
+Direct3D je bil Microsoftov odgovor na OpenGL. Direct3D je zaprt programski vmesnik, popolnoma v lasti Microsofta. Programski vmesnik je uradno podprt samo na operacijskih sistemih Windows. Nekoliko spremenjena oblika vmesnika se nahaja tudi na Microsoftovi igralni konzoli Xbox. Na drugih platformah je možno Direct3D aplikacije poganjati samo z uporabo posebne virtualizacijske plasti. Na Linuxu to virtualizacijsko plast ponuja orodje Wine, vendar ne podpira Direct3D vmesnika v celoti.
 
-Direct3D se ne uporablja toliko v profesionalnih aplikacijah kot OpenGL. Razlog je bil v slabši hitrosti izvajanja na začetku... Je pa toliko bolj popularen pri računalniških igrah.
-
-\section{RaspberryPi}
-\label{sec:raspberryPi}
-
-RaspberryPI je majhen računalnik, velikosti kreditne kartice, ki je bil razvit za promocijo učenja računalniške znanosti. Računalnik vsebuje 700 MHz ARM procesor, 256 (ali 512) MB delovnega pomnilnika in grafično procesno enoto VideoCore IV s 250MHz, ki podpira tudi OpenGL ES2.0.
-
-Raspberry Pi je zanimiva mešanica med mobilnimi in namiznimi računalniki. Po svoji strojni opremi je sicer zelo podoben mobilnim napravam, vendar na njem ne teče mobilni operacijski sistem. Na Raspberry Piju je mogoče poganjati operacijske sisteme, ki so značilni za namizne računalnike. Najbolj pogosto uporabljena je malce prirejena verzija Linux distribucije Debian, uradno možno pa je tudi naložiti distribuciji Arch in Fedora.
-
-Čip za izrisovanje grafike na RaspberryPiju ima popolno podporo za OpenGL ES2.0 in je kljub omejitvam zmožen poganjati zahtevnejše aplikacije. Lep primer je računalniška igra Minecraft.
+Direct3D se ne uporablja v profesionalnih aplikacijah tako pogosto kot OpenGL. Razlogov je več. Na začetku je bil OpenGL vmesnik hitrejši in bolj natančen pri izrisovanju. Ker se je OpenGL pojavil pred Direct3Djem se je že zakoreniril. Direct3D je bil za razliko od OpenGL namenjen za osebne računalnike in ne samo za drage delovne postaje. Zaradi fiksnega cevovoda za izrisovanje je onemogočil proizvajalcem grafičnih kartic ustvarjanje lastnih modulov, ki bi otežili razvijanje aplikacij. Programski vmesnih je zaradi teh razlogov postal zelo popularen pri razvijalcih računalniških iger in tudi večina aplikacij, ki API uporablja je računalniška igra.
 
 \section{Mobilne platforme} 
 
 Na trgu najdemo pester nabor mobilnih platform. Največji igralci v času pisanja so Google s svojim odprtokodnim sistemom Android, Apple s svojim sistemom iOS, nekaj tržnega deleža pa imata tudi podjetji Microsoft, z mobilno različico opercijskega sistema Windows (Windows 7, 8 RT, Phone), ter podjetje BlackBerry z istoimenskim naborom pametnih telefonov namenjenim predvsem poslovnim uporabnikom.
 
-Poleg že obstoječih pa bodo v bližnji prihodnosti na trg stopili tudi novi igralci. Fundacija Mozilla je razvila Firefox OS, podjetje Canonical pa pripravlja različico Ubuntu operacijskega sistema, ki bo delovala tudi na mobilnih telefonih in tablicah.
+Poleg že obstoječih pa bodo v bližnji prihodnosti na trg stopili tudi novi igralci. Fundacija Mozilla je  razvila svojo rešitev - Firefox OS, temelječ na spletnih tehnologijah. Podjetje Canonical pripravlja različico Ubuntu operacijskega sistema, ki bo delovala tudi na mobilnih telefonih in tablicah. Na Finskem pa podjetje Jolla Mobile razvija svoj lastni operacijski sistem Sailfish OS, ki tudi temelji na Linux jedru.
 
 \subsection{iOS}
 
@@ -97,8 +93,6 @@ Ker podpora temelji na standardih za spletne tehnologije ni podpore za OpenGL ES
 
 Operacijski sistem Firefox OS sicer temelji na jedru Linux, ki služi kot platforma na katerem se nato zažene Gecko. Gecko je tako imenovani pogon za razporeditev, ki je prisoten v vseh verzijah brskalnika Firefox in pa tudi drugje. Ker Gecko deluje na različnih platformah, je Firefox OS možno naložiti tudi na druge naprave, tudi na RaspberryPi[\ref{sec:raspberryPi}]. 
 
-
-
 \subsection{Ubuntu}
 
 Operacijski sistem Ubuntu je najbolj popularen na Linuxu temelječi operacijski sistem na namiznih računalnikih. Podjetje, ki razvija operacijski sistem Ubuntu ima vizijo spraviti podobno funkcionalnost tudi na mobilne naprave - telefone in tablice. Prva naprava, ki bo izšla z mobilnim operacijskim sistemom Ubuntu, je telefon Edge in je bila napovedana 22. julija 2013. Pred tem so radovedni razvijalci lahko naložili operacijski sistem na mobilni telefon Nexus 4, ki ima privzeto naložen operacijski sistem Android.
@@ -108,13 +102,38 @@ Canonical za razvoj aplikacij za mobilni operacijski sistem Ubuntu priporoča up
 
 Dokumentacija za Ubuntu Phone še ni popolna, ampak kot se da trenutno razbrati je uporaba OpenGLa podprta s strani qt 3d iniciative. Za pisanje grafično intenzivnih aplikacij se tako namesto QMLa priporoča C++.
 
-O samih zmogljivostih telefona in tablic se sicer še ne ve veliko, pričakuje pa se, da bo podprt vsaj standard za OpenGL ES2.0 aplikacije.
+O samih zmogljivostih telefona in tablic se sicer še ne ve veliko, pričakuje pa se, da bo podprt vsaj standard za OpenGL ES2.0 aplikacije. 
+
+\subsection{Sailfish OS}
+
+Sailfish je operacijski sistem temelječ na Linux jedru, namenjen mobilnim telefonom in drugim napravam. Podobno kot operacijski sistem Ubuntu bo tudi Sailfish uporabljal QML in Qt [\ref{sec:qt}] za razvoj domorodnih aplikacij.
+
+Tudi kar se tiče podpore za razvoj grafično intenzivnih aplikacij je slično Ubuntu mobilnemu operacijskemu sistemu. Dostop do OpenGL programskega vmesnika je mogoč s pomočjo QTVIEWa in nam omogoča grajenje. Razlike med Ubuntu in Sailfish so minimalne, tako da bomo lahko teoretično aplikacijo pisali za oba sistema brez večjih sprememb.
+
+\section{Računalniki na eni plošči}
+
+\subsection{Raspberry Pi}
+\label{sec:raspberryPi}
+
+Raspberry PI je majhen računalnik, velikosti kreditne kartice, ki je bil razvit za promocijo učenja računalniške znanosti. Računalnik vsebuje 700 MHz ARM procesor, 256 (ali 512) MB delovnega pomnilnika in grafično procesno enoto VideoCore IV s 250MHz, ki podpira OpenGL ES 2.0.
+
+Raspberry Pi je zanimiva mešanica med mobilnimi in namiznimi računalniki. Po svoji strojni opremi je sicer zelo podoben mobilnim napravam, vendar na njem ne teče mobilni operacijski sistem. Na Raspberry Piju je mogoče poganjati operacijske sisteme, ki so značilni za namizne računalnike. Najbolj pogosto uporabljena je malce prirejena verzija Linux distribucije Debian, uradno možno pa je naložiti tudi distribuciji Arch Linux in Fedora.
+
+Čip za izrisovanje grafike na Raspberry Piju ima popolno podporo za OpenGL ES2.0 in je kljub omejitvam zmožen poganjati zahtevnejše aplikacije.  Lep primer je računalniška igra Minecraft.
+
+% http://makezine.com/2013/04/15/arduino-uno-vs-beaglebone-vs-raspberry-pi/
+
+\subsection{BeagleBone}
+
+Podobno kot Raspberry Pi je tudi BeagleBone majhen računalnik, ki je sposoben poganjati Linux sistem. BeagleBone ima malenkost hitrejši ARM procesor z 720MHz in 256 MB RAMa. Obstajajo tudi bolj zmogljive verzije, ki imajo do 1GHz procesor in 512MB RAMa (BeagleBone Black). Enota za grafično procesiranje PowerVR je zmožna poganjati tako 3D kot 2D OpenGL aplikacije.
 
 \section{Skupne zmogljivosti}
 
-Kot smo videli pri posameznih primerih ima večina mobilnih naprav podporo za OpenGL ES2.0, tako da je glavni problem pri razvoju medplatformnih aplikacijah premagati omejitve pri domorodnih jezikih. Večina mobilnih operacijskih sistemih ima svoj programski jezik, ki ga preferira za pisanje aplikacij.
+Kot lahko vidimo iz navedenih primerov platform se ne moremo odločiti za en sam programski jezik in en sam programski vmesnik, s katerima bi pokrili vse možne platforme. Največji del trga lahko pokrijemo, če se odločimo za OpenGL ES 2.0 programski vmesnik z programskim jezikom C++, saj s tem lahko razvijamo grafično intenzivne aplikacije na Wndows, Linux in Mac OSX, kot tudi na mobilnih platformah Android, iOS... Kot bomo videli v nadaljevanju obstajajo tudi možnosti kako razširiti podporo.
 
-Večina izmed njih ima tudi na voljo tako imenovani NDK native development kit oz. po slovensko domorodni nabor orodij za razvijanje aplikacij. NDK normalno podpira jezik C++, ki je na voljo na večini operacijskih sistemov. Tudi 
+Kot smo videli pri posameznih primerih ima večina mobilnih naprav podporo za OpenGL ES2.0, tako da je glavni problem pri razvoju medplatformnih aplikacijah premagati omejenost na programske jezike za določeno platformo. Večina mobilnih operacijskih sistemih ima svoj programski jezik, ki je v uporabi za pisanje domorodnih aplikacij. Načinov premagovanja teh ovir je več in nekaj si jih bomo tudi ogledali. Najbolj popularno je prevajati iz enega jezika v drugega na primer napišemo aplikacijo v programskem jeziku Java in potem s posebnimi orodji prevedemo v kodo, ki jo razumejo tudi C\# prevajalniki.
+
+Na večini naprav je tudi na voljo tak ali drugačen spletni brskalnik. Spletne aplikacije, ki tečejo znotraj brskalnika, za izvajanje uporabljajo programski jezik Javascript, ki je tako eden redkih jezikov, ki je na voljo na vseh napravah. Spletne aplikacije so lahko tudi grafično intenzivne in za svoje delovanje lahko celo uporabljajo dostop do grafičnega procesorja.
 
 
 

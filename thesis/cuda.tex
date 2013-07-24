@@ -1,0 +1,37 @@
+\chapter{Programiranje na grafičnem čipu}
+
+% http://www.alexstjohn.com/WP/2013/07/22/the-evolution-of-direct3d/
+
+Ker je grafični cevovod (tako pri Direct3D, kot pri OpenGLu) z leti postal zelo zapleten in ker je prenašanje podatkov med centralno procesno enoto zahtevna operacija, se pojavlja nova alternativa - pisanje aplikacij direktno na grafičnem čipu. Taka aplikacija lahko teoretično dela na večih platformah s kompatibilno grafično kartico - premestiti bi bilo potrebno samo dele aplikacije, ki imajo opravka z nastavljanjem ogrodja. 
+
+Tudi nekompatibilnosti med posameznimi grafičnimi proizvajalci bi bilo mogoče odpraviti z uporabo grafičnih pogonov, ki abstrahirajo delovanje posameznih kartic in nam omogočajo enoten programski vmesnik do vseh nastavitev.
+
+Dva primera takšnih splošno namenskih jezikov sta Nvidiina CUDA in Microsoftov AMP programski vmesnik.
+
+\section{CUDA}
+% http://www.nvidia.com/object/cuda_home_new.html
+CUDA je platforma za paralelno procesiranje in programski model, ki ga je iznašla Nvidia. S CUDO lahko drastično povečamo hitrost računanja z uporabo grafične kartice.
+
+\subsection{CUDA na mobilnih platformah}
+% http://www.pcworld.com/article/212088/article.html
+% http://www.tomshardware.com/news/GPU-Compute-Tegra-GTC-2013-CUDA-Dark-Silicon,21620.html
+% http://gpuscience.com/news/nvidia-tegra-4-gpgpu-and-cuda-support-goes-mobile/
+
+
+Nvidia ima tudi načrte, da bi v naslednjih nekaj letih CUDA arhitekturo prenesla tudi na mobilne naprave. To bi pomenilo velik preskok v izrazni moči mobilnih naprav.
+
+Že za četrto generacijo mobilinih GPU procesorjev Tegra 4, se je govorilo, da bodo podpirali CUDAo, vendar so se govorice izkazale kot lažne. Vseeno je bilo potrjeno s strani ljudi, ki delajo pri Nvidiji, da je v razvoju mobilni procesor, ki bo zmožen izvajati CUDA aplikacije. Kdaj točno bo postal na voljo pa lahko samo ugibamo. Do grafično intenzivnih aplikacij pisanih na grafičnem čipu nam torej tudi na mobilnih napravah manjka samo še nekaj let.
+
+\section{OpenCL}
+
+Open Computing Language je ogrodje za pisanje programov, ki se izvajajo na heterogenih platformah, ki so sestavljena iz večih centralno procesnih enot, grafičnih procesnih enot, digitalnih procesorjev signalov in drugih procsorjih.
+
+% http://www.accelereyes.com/products/mobile
+Obstajajo knjižnice, ki lahko prednosti OpenCLja uporabljajo tudi na mobilnih napravah. Ena izmed teh knjižnic je tudi AccelerEyes, ki obljublja s to tehnologijo obljublja procesiranja videa v realnem času, hitrejše procesiranje podatkov, boljše komputacije fotografij. AccelerEyes je C/C++ knjižnica s preprostim matričnim programskim vmesnikom. Enaka koda se lahko uporabi na mobilnih platformah. Trenutno podprta sta Android in iOS.
+
+\section{AMP}
+
+% http://msdn.microsoft.com/en-us/library/vstudio/hh265137.aspx
+AMP (Accelerated Massive Parallelism) pospeši delovanje C++ programske kode tako, da uporabi prednosti paralelnega izvajanja, ki ga ponujajo grafične procesne enote. AMP trenutno podpira večdimenzionalne sezname, indeksiranje, prenašanje spomina, in tiling.
+
+Tako CUDA kot AMP sta 

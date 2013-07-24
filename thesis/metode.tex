@@ -2,9 +2,13 @@
 
 \section{Spletne aplikacije}
 
-Na področju spletnih tehnologij je bilo v zadnjih letih narejeno veliko. S pojavom spletnega brskalnika Google Chrome se je začela prava tekma za hitrost. Ker so spletne aplikacije postajale vedno bolj zahtevne, je bilo prvenstvenega pomena, da brskalniki postanejo hitri in odzivni.
+Programski jezik Javascript je nastal okoli leta 1995, ko je bil tudi vključen v spletni brskalnik Netscape. Jezik Javascript je omogčil izvedbo kode na uporabnikovi strani (client-side) in spletne strani so postale veliko bolj interaktivne.
 
-Brskalniki so začeli med seboj začeli tekmovati, kdo lahko hitrejše izvaja Javascript kodo, rezultate te tekme pa je bil, da so v roku parih let vsi novejši brskalniki sposobni hitro izvajati tudi bolj zahtevne Javascript aplikacije. 
+V zgodnjih dneh spleta se programiranje na uporabnikovi strani ni prav veliko uporabljalo, interpreterji so bili počasni, Internet Explorer je uporabljal svoj jezik...
+
+Šele s pojavom spletnega brskalnika Google Chrome so se zares odprla vrata za razvoj grafično intenzivnih aplikacij znotraj brskalnika. Google Chrome je začel pravo tekmo za hitrost. Ker so spletne aplikacije postajale vedno bolj zahtevne, je bilo prvenstvenega pomena, da brskalniki postanejo hitri in odzivni.
+
+Brskalniki so začeli med seboj tekmovati, kdo lahko hitrejše izvaja Javascript kodo, rezultate te tekme pa je bil, da so v roku parih let vsi novejši brskalniki sposobni hitro izvajati tudi bolj zahtevne Javascript aplikacije. 
 
 S pojavom pametnih telefonov in tablic so spletne tehnologije postale dostopne tudi na mobilnih platformah. Zaradi strojnih omejitev in predvsem življenjske dobe baterij, so bili hitri in učinkoviti Javascript pogoni na mobilnih platformah celo bolj pomembni kot na namiznih računalnikih.
 
@@ -20,13 +24,13 @@ Sodobni brskalniki nam za izris svojih oblik na zaslon poleg HTMLja in CSSa ponu
 
 Element $platno$ se je pojavilo kot Appleov eksperiment znotraj Mac OSX Webkit komponente leta 2004. Uporabljen je bil v spletnem brskalniku Safari in za vtičnike v Dashboard aplikaciji. Leto kasneje so podporo $canvas$ elementu dodali tudi Gecko brskalniki, leta 2006 pa tudi spletni brskalnik Opera. Istega leta je organizacija Web Hypertext Application Technology Working Group (WHATWG) element standardizirala. Internet Explorer je dodal domorodno podporo za $platno$ v verziji 8.
 
-$platno$ je danes dobro podprto v vseh modernih spletnih brskalnikih, tudi na mobilnih napravah. Na določenih platformah in brskalnikih lahko uporablja tudi strojno pospeševanje, vendar se ta funkcija zaenkrat smatra še kot eksperimentalna in praviloma ni dostopna na mobilnih napravah. Zaradi tega dejstva obstajajo omejitve kompleksnosti, ki jih s $platno$m lahko dosežemo.
+$platno$ je danes dobro podprto v vseh modernih spletnih brskalnikih, tudi na mobilnih napravah. Na določenih platformah in brskalnikih lahko uporablja tudi strojno pospeševanje, vendar se ta funkcija zaenkrat smatra še kot eksperimentalna in praviloma ni dostopna povsod. Zaradi slabe strojne podpore obstajajo omejitve kompleksnosti, ki jih s $platno$m lahko dosežemo.
 
 % http://www.html5rocks.com/en/tutorials/canvas/performance/
 
 $Platno$ je namenjeno izrisovanju dvo dimenzionalnih oblik na zaslon. Programerju nudi preprost API za risanje raznih oblik ($fillRect$, $fillCircle$), risanje besedila ($fillText$), risanje poti ($moveTo$, $lineTo$), risanje slik ($drawImage$) in tudi risanje gradientov ($drawGradient$). Nudi tudi dostop do operacij nad posameznimi oblikami, kot so na primer premakni ($translate$), zavrti ($rotate$) itd. 
 
-Programer lahko aplikacijo s $platnom$ razvija iz udobja namiznega računalnika. Vmesne rezultate dela lahko preverja v svojem spletnem brskalniku in šele nato prenese aplikacijo na mobilno napravo. Pri razvijanju aplikacije na namiznem računalniku mora biti programer še posebaj pozoren na strojne omejitve mobilnih naprav. 
+Programer lahko aplikacijo s $platnom$ razvija iz udobja namiznega računalnika. Vmesne rezultate dela lahko preverja v svojem spletnem brskalniku in šele nato, ko se prepriča v pravilno delovanje, prenese aplikacijo na mobilno napravo. Pri razvijanju aplikacije na namiznem računalniku mora biti programer še posebej pozoren na strojne omejitve mobilnih naprav. 
 
 Prednost uporabe dvodimenzionalnega platna je, v dobri medplatformni podpori tako na namiznih računalnikih kot tudi na mobilnih napravah. Cena dobro podprtosti pa so omejene zmožnosti. Izrisovanje zahtevnejših slik lahko postane počasno, izrisovanje v treh dimenzijah pa zaradi slabe podpore strojnemu pospeševanju skorajda nemogoče. 
 
@@ -36,13 +40,13 @@ Kljub pomanjkljivostim lahko s pomočjo platna na preprost način napišemo graf
 
 2D $platno$ na določenih konfiguracijah omogoča tudi strojno pospeševanje. Z omogočenim strojnim pospeševanjem centralna procesna enota prenese nekaj svojega dela na grafično procesno enoto. Na ta način se lahko hitrost izrisovanja močno poveča.
 
-Strojno pospešeno $platno$ zaenkrat še ni povsod na voljo in zato na prednosti, ki jih prenaša, še ne gre računati. Brskalnik Google Chrome je na primer dodal podporo v verziji 18 (Marec 2012), vendar strojno pospeševanje še vedno ni povsod (Linux, Android).
+Strojno pospešeno $platno$ zaenkrat še ni povsod na voljo in zato na prednosti, ki jih prenaša, še ne gre računati. Brskalnik Google Chrome je na primer dodal podporo v verziji 18 (Marec 2012), vendar strojno pospeševanje še vedno ni omogočeno povsod (Linux, Android).
 
 \subsection{3D platno WebGL}
 
-WebGL je medplatformni API, uporabljen za delo s 3D grafiko znotraj spletnega brskalnika. Je kontekst $canvas$a, ki ima direkten dostop do grafične kartice preko GLSL jezika za pisanje senčilnikov (shaders). 
+WebGL je medplatformni programski vmesnik, uporabljen za delo s 3D grafiko znotraj spletnega brskalnika. Je kontekst $canvas$a, ki ima direkten dostop do grafične kartice preko GLSL jezika za pisanje senčilnikov (shaders). 
 
-WebGL temelji na OpenGL ES2.0 standardu, ki je na voljo na namiznih računalnikih in mobilnih napravah, kjer WebGL kot tak morebiti še ni podprt.
+WebGL temelji na OpenGL ES 2.0 standardu, ki je na voljo na namiznih računalnikih in mobilnih napravah, kjer WebGL kot tak morebiti še ni podprt.
 
 WebGL je nastal iz eksperimentov Vladimir Vukićevića, zaposlenega pri Mozilli. Leta 2006 je začel delati na pospešenem "3D platnu za splet". Do konca leta 2007 sta tako Mozilla kot Opera imeli delujočo implementacijo WebGL APIja. Leta 2009 je neprofitna organizacija Khronos ustanovila skupino za delo na WebGLu (WebGL Working Group). Člani skupine so bili tudi Apple, Google, Mozilla, Opera in drugi. Prva verzija specifikacije je bila izdana marca 2011.
 
@@ -52,9 +56,9 @@ Na mobilnih brskalnikih je stanje še slabše. Večina mobilnih brskalnikov še 
 
 WebGL, za razliko od 2D platna, brez strojne podpore sploh ne deluje. 
 
-WebGL kompatibilnost ima svoje probleme tudi na namiznih računalnikih, saj na določenih operacijskih sistemih z določenim brskalniki še vseeno ne deluje. Problem je, da je še vedno veliko gonilnikov za grafične kartice na črni listi, ki ima delovanje privzeto izklopljeno. Na črni listi so gonilniki, ki po mnenju avtorjev brskalnikov še niso dovolj stabilni oziroma imajo pri prikazovanju WebGL vsebin probleme. Omejitve sicer lahko zaobidemo s postavitvijo posebne zastavice ob zagonu brskalnika. 
+WebGL kompatibilnost ima svoje probleme tudi na namiznih računalnikih, saj na določenih operacijskih sistemih z določenim brskalniki še vseeno ne deluje. Problem je, da je še vedno veliko gonilnikov za grafične kartice na črni listi, ki ima delovanje privzeto izklopljeno. Na črni listi so gonilniki, ki po mnenju avtorjev brskalnikov še niso dovolj stabilni oziroma imajo pri prikazovanju WebGL vsebin probleme. Omejitve sicer lahko zaobidemo s postavitvijo posebne zastavice ob zagonu brskalnika, vendar normalni uporabniki tega ne bodo počeli.
 
-Razvijalci brskalnikov kot glavni razlog za slabo podprtost WebGLa navajajo probleme z varnostjo. Narediti peskovnik (sandbox) za spletno stran je zelo težko, če le ta za svoje delovanje potrebuje direkten dostop do grafične kartice.
+Razvijalci brskalnikov kot glavni razlog za slabo podprtost WebGLa navajajo probleme z varnostjo. Narediti peskovnik (sandbox) za spletno stran je zelo težko, še posebej če le ta za svoje delovanje potrebuje direkten dostop do grafične kartice.
 
 \subsubsection{Razvoj WebGL aplikacije}
 
@@ -66,7 +70,7 @@ Podobno kot za 2D platno velja tudi za WebGL, aplikacijo razvijamo na namiznem r
 
 \subsubsection{Medplatformnost}
 
-V času pisanja WebGL še ni dobra izbira za medplatformni razvoj aplikacij. Vendar vse smernice kažejo v dejstvo, da se bo podpora v prihodnosti precej izboljšala. Dober indikator za to je tudi vključitev podpore v Internet Explorer 11, kljub dejstvu, da sta bila skupina Khronos in Microsoft v nenehni tekmovalnosti, Khronos s svojim OpenGL APIjem, Microsoft pa z lastnim DirectX sistemom.
+V času pisanja WebGL še ni dobra izbira za medplatformni razvoj aplikacij. Vendar vse smernice kažejo, da se bo podpora v prihodnosti precej izboljšala. Dober indikator za to je tudi vključitev podpore v Internet Explorer 11, kljub dejstvu, da sta bila skupina Khronos in Microsoft v nenehni tekmovalnosti, Khronos s svojim OpenGL APIjem, Microsoft pa z lastnim DirectX sistemom.
 
 Za razliko od zaprtih sistemov, kot je na primer Flash, ki mu podprtost pada (na iOSu ni bil podprt nikoli, na Androidu pa v zadnjih verzijah tudi uradno ni več podprt), je WebGL trenutno na dobri poti, da postane primerno orodje za razvoj medplatformnih aplikacij.
 
@@ -197,4 +201,5 @@ C++ dostopen povsod
 \section{Flash}
 
 \section{QT}
+\label{sec:qt}
 % http://doc-snapshot.qt-project.org/qt5-stable/qtdoc/windowsce-opengl.html
