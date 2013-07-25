@@ -2,11 +2,11 @@
 
 \section{Spletne aplikacije}
 
-Programski jezik Javascript je nastal okoli leta 1995, ko je bil tudi vključen v spletni brskalnik Netscape. Jezik Javascript je omogčil izvedbo kode na uporabnikovi strani (client-side) in spletne strani so postale veliko bolj interaktivne.
+Programski jezik Javascript je nastal okoli leta 1995, ko je bil tudi vključen v spletni brskalnik Netscape. Jezik Javascript je omogočil izvedbo kode na uporabnikovi strani (client-side) in spletne strani so lahko postale interaktivne.
 
-V zgodnjih dneh spleta se programiranje na uporabnikovi strani ni prav veliko uporabljalo, interpreterji so bili počasni, Internet Explorer je uporabljal svoj jezik...
+V zgodnjih dneh spleta se programiranje na uporabnikovi strani ni prav veliko uporabljalo, Javscript interpreterji so bili počasni, zaradi Internet Explorerja pa je bilo pisanje Javascript aplikacij, ki bi delale enako na vseh brskalnikih zelo težavno. Šele kasneje, ko so brskalniki malo napredovali, je postalo pisanje aplikacij na strani uporabnika dejanska opcija.
 
-Šele s pojavom spletnega brskalnika Google Chrome so se zares odprla vrata za razvoj grafično intenzivnih aplikacij znotraj brskalnika. Google Chrome je začel pravo tekmo za hitrost. Ker so spletne aplikacije postajale vedno bolj zahtevne, je bilo prvenstvenega pomena, da brskalniki postanejo hitri in odzivni.
+S pojavom spletnega brskalnika Google Chrome se je začela zlata doba brskalnikov in bogatih aplikacij na strani uporabnika. Google Chrome je začel pravo tekmo za hitrost. Ker so spletne aplikacije postajale vedno bolj zahtevne, je bilo prvenstvenega pomena, da brskalniki postanejo hitri in odzivni.
 
 Brskalniki so začeli med seboj tekmovati, kdo lahko hitrejše izvaja Javascript kodo, rezultate te tekme pa je bil, da so v roku parih let vsi novejši brskalniki sposobni hitro izvajati tudi bolj zahtevne Javascript aplikacije. 
 
@@ -19,7 +19,7 @@ Programski jezik Javascript je pravzaprav ena izmed redkih skupnih točk pametni
 Prav vse mobilne platforme imajo tudi takšno ali drugačno implementacijo tako imenovanega elementa za spletni pogled ($webview$). Ta element nam omogoča prikaz določene spletne strani znotraj domorodne aplikacije. Na ta način lahko spletno aplikacijo zapakiramo v ovitek (wrapper), ki se potem iz vidika končnega uporabnika obnaša slično domorodnim aplikacijam. Zanimiva izjema je Mozillin mobilni operacijski sistem FirefoxOS, ki spletne aplikacije smatra kot domorodne in ovitki niso potrebni.
 
 \subsection{2D platno}
-
+\label{sec:2dcanvas}
 Sodobni brskalniki nam za izris svojih oblik na zaslon poleg HTMLja in CSSa ponujajo tudi uporabo $platna$ (angl. canvas). 
 
 Element $platno$ se je pojavilo kot Appleov eksperiment znotraj Mac OSX Webkit komponente leta 2004. Uporabljen je bil v spletnem brskalniku Safari in za vtičnike v Dashboard aplikaciji. Leto kasneje so podporo $canvas$ elementu dodali tudi Gecko brskalniki, leta 2006 pa tudi spletni brskalnik Opera. Istega leta je organizacija Web Hypertext Application Technology Working Group (WHATWG) element standardizirala. Internet Explorer je dodal domorodno podporo za $platno$ v verziji 8.
@@ -30,9 +30,9 @@ $platno$ je danes dobro podprto v vseh modernih spletnih brskalnikih, tudi na mo
 
 $Platno$ je namenjeno izrisovanju dvo dimenzionalnih oblik na zaslon. Programerju nudi preprost API za risanje raznih oblik ($fillRect$, $fillCircle$), risanje besedila ($fillText$), risanje poti ($moveTo$, $lineTo$), risanje slik ($drawImage$) in tudi risanje gradientov ($drawGradient$). Nudi tudi dostop do operacij nad posameznimi oblikami, kot so na primer premakni ($translate$), zavrti ($rotate$) itd. 
 
-Programer lahko aplikacijo s $platnom$ razvija iz udobja namiznega računalnika. Vmesne rezultate dela lahko preverja v svojem spletnem brskalniku in šele nato, ko se prepriča v pravilno delovanje, prenese aplikacijo na mobilno napravo. Pri razvijanju aplikacije na namiznem računalniku mora biti programer še posebej pozoren na strojne omejitve mobilnih naprav. 
+Programer lahko aplikacijo s $platnom$ razvija in testira iz udobja namiznega računalnika. Vmesne rezultate dela lahko preverja v svojem spletnem brskalniku in šele nato, ko se prepriča v pravilno delovanje, prenese aplikacijo na mobilno napravo. Ta način dela zelo pohitri razvoj, saj prenos aplikacije na mobilno napravo lahko traja tudi več sekund. Pri razvijanju aplikacije na namiznem računalniku mora biti programer še posebej pozoren na strojne omejitve mobilnih naprav. 
 
-Prednost uporabe dvodimenzionalnega platna je, v dobri medplatformni podpori tako na namiznih računalnikih kot tudi na mobilnih napravah. Cena dobro podprtosti pa so omejene zmožnosti. Izrisovanje zahtevnejših slik lahko postane počasno, izrisovanje v treh dimenzijah pa zaradi slabe podpore strojnemu pospeševanju skorajda nemogoče. 
+Prednost uporabe dvodimenzionalnega platna je, v dobri medplatformni podpori tako na namiznih računalnikih kot tudi na mobilnih napravah. Cena dobre podprtosti pa so omejene zmožnosti. Izrisovanje zahtevnejših slik lahko postane počasno, izrisovanje v treh dimenzijah pa zaradi slabe podpore strojnemu pospeševanju skorajda nemogoče. 
 
 Kljub pomanjkljivostim lahko s pomočjo platna na preprost način napišemo grafično intenzivno aplikacijo, ki bo delala na več platformah. 
 
@@ -43,7 +43,7 @@ Kljub pomanjkljivostim lahko s pomočjo platna na preprost način napišemo graf
 Strojno pospešeno $platno$ zaenkrat še ni povsod na voljo in zato na prednosti, ki jih prenaša, še ne gre računati. Brskalnik Google Chrome je na primer dodal podporo v verziji 18 (Marec 2012), vendar strojno pospeševanje še vedno ni omogočeno povsod (Linux, Android).
 
 \subsection{3D platno WebGL}
-
+\label{sec:WebGL}
 WebGL je medplatformni programski vmesnik, uporabljen za delo s 3D grafiko znotraj spletnega brskalnika. Je kontekst $canvas$a, ki ima direkten dostop do grafične kartice preko GLSL jezika za pisanje senčilnikov (shaders). 
 
 WebGL temelji na OpenGL ES 2.0 standardu, ki je na voljo na namiznih računalnikih in mobilnih napravah, kjer WebGL kot tak morebiti še ni podprt.
@@ -62,9 +62,9 @@ Razvijalci brskalnikov kot glavni razlog za slabo podprtost WebGLa navajajo prob
 
 \subsubsection{Razvoj WebGL aplikacije}
 
-Razvoj aplikacij z uporabo WebGLa je tudi bolj zahtevno za programerja, kot razvoj aplikacij z 2D platnom. WebGL API namreč ne omogoča preprostih funkcij za risanje na zaslon in tudi za izris najbolj osnovnih oblik je potrebno nastaviti pravilen kontekst in napisati, prevesti ter povezati dva programa za senčilnike. 
+Razvoj aplikacij z uporabo WebGLa je bolj zahtevno za programerja, kot razvoj aplikacij z 2D platnom. WebGL programski vmesnik namreč ne omogoča preprostih funkcij za risanje na zaslon in tudi za izris najbolj osnovnih oblik je potrebno kar nekaj dela. Nastaviti je potrebno pravilen kontekst in napisati, prevesti ter povezati dva programa za senčilnike. 
 
-Senčilniki so programi, ki se izvajajo na grafični procesni enoti. WebGL definira dve vrsti senčilnih programov - vertex in fragment. Prvi skrbi za pozicijo vsakega oglišča, ki ga izrišemo na na zaslonu, drugi pa za barvo vsakega fragmenta. Pisanje senčilnikov poteka v programskem jeziku GLSL, ki je podzvrst programskega jezika C. Nabor ukazov, ki je na voljo, je v primerjavi s programskim jezikom ANSI-C sicer omejen, vendar imamo dodane posebne ukaze za lažje delo z vektorji in matrikami.
+Senčilniki so programi, ki se izvajajo na grafični procesni enoti. WebGL definira dve vrsti senčilnih programov - ogliščni (vertex) in fragmentni (fragment). Prvi skrbi za pozicijo vsakega oglišča, ki ga izrišemo na na zaslonu, drugi pa za barvo vsakega fragmenta. Pisanje senčilnikov poteka v programskem jeziku GLSL, ki je podzvrst programskega jezika C. Nabor ukazov, ki je na voljo, je v primerjavi s programskim jezikom ANSI-C sicer omejen, vendar imamo dodane posebne ukaze za lažje delo z vektorji in matrikami.
 
 Podobno kot za 2D platno velja tudi za WebGL, aplikacijo razvijamo na namiznem računalniku in po potrebi preizkušamo kompatibilnost na mobilnih napravah.
 
@@ -72,13 +72,13 @@ Podobno kot za 2D platno velja tudi za WebGL, aplikacijo razvijamo na namiznem r
 
 V času pisanja WebGL še ni dobra izbira za medplatformni razvoj aplikacij. Vendar vse smernice kažejo, da se bo podpora v prihodnosti precej izboljšala. Dober indikator za to je tudi vključitev podpore v Internet Explorer 11, kljub dejstvu, da sta bila skupina Khronos in Microsoft v nenehni tekmovalnosti, Khronos s svojim OpenGL APIjem, Microsoft pa z lastnim DirectX sistemom.
 
-Za razliko od zaprtih sistemov, kot je na primer Flash, ki mu podprtost pada (na iOSu ni bil podprt nikoli, na Androidu pa v zadnjih verzijah tudi uradno ni več podprt), je WebGL trenutno na dobri poti, da postane primerno orodje za razvoj medplatformnih aplikacij.
+Za razliko od zaprtih sistemov, kot je na primer Flash, ki mu podprtost pada (na iOSu ni bil podprt nikoli, na Androidu pa v zadnjih verzijah tudi uradno ni več podprt), je WebGL trenutno na dobri poti, da postane primerno orodje za razvoj grafično intenzivnih medplatformnih aplikacij.
 
 \subsection{Zvok}
 
 Aplikacije napisane v 2D platnu in aplikacije pisane v WebGLu dostopajo do zvoka na enak način - to zato, ker je izrisovanje povsem ločeno od ostalih komponent.
 
-HTML5 definira dokaj preprost API za predvajanje zvočnih datotek znotraj brskalnika. Programer ima na voljo ukaze za predvajanje zvoka, premikanje po zvočni datoteki in nastavljanja glasnosti zvočne datoteke, ne pa tudi kakšnih bolj naprednih ukazov kot spreminjanje frekvence...
+HTML5 definira dokaj preprost API za predvajanje zvočnih datotek znotraj brskalnika. Programer ima na voljo ukaze za predvajanje zvoka, premikanje po zvočni datoteki in nastavljanja glasnosti zvočne datoteke, ne pa tudi kakšnih bolj naprednih ukazov kot spreminjanje frekvence, tonalitete itd.
 
 Za bolj napredne funkcije je potrebno posesti po drugih metodah. Ena izmed najbolj uporabnih je uporaba Flash predvajalnika za predvajanje zvoka. S tem pridobimo dodatne funkcije za delo z zvokom, vendar se zaradi vse slabše podpore Flash predvajalnikov na mobilnih podporah tudi lahko precej omejimo. 
 
@@ -86,15 +86,15 @@ Uporabimo lahko tudi knjižnico, ki nam za predvajanje zvoka ponudi svoj lasten 
 
 \subsection{Zaznavanje vhoda}
 
-Grafično intenzivne aplikacije potrebujejo potrebujejo tudi procesirati vhod uporabnika. Za vhod je na namiznih računalnikih značilna kombinacija miška in tipkovnica. Na mobilnih napravah pa imamo navadno na voljo zgolj na dotik občutljiv zaslon. V javascriptu je napisanih kar nekaj knjižnic, ki nam pomagajo premostiti razlike med različnimi načini vnosa...
+Grafično intenzivne aplikacije potrebujejo potrebujejo tudi procesirati vhod uporabnika. Za vhod je na namiznih računalnikih značilna kombinacija miška in tipkovnica. Na mobilnih napravah pa imamo navadno na voljo zgolj na dotik občutljiv zaslon. V javascriptu je napisanih kar nekaj knjižnic, ki nam pomagajo premostiti razlike med različnimi načini vnosa.
 
 \subsection{Primernost programskega jezika JavaScript}
 
-Za razvoj grafično zahtevnih aplikacij, je hitrost izvajanja programa bistvenega pomena. Za ta namen se praviloma uporablja statično tipizirane jezike in ročno sproščanje pomnilnika (garbage collection). V industriji se za te namene najbolj uporablja programski jezik C++.
+Za razvoj grafično zahtevnih aplikacij, je hitrost izvajanja programa bistvenega pomena. Za ta namen se praviloma uporablja statično tipizirane jezike in ročno sproščanje pomnilnika (garbage collection). V industriji najbolj pogosto uporabljen programski jezik C++.
 
 Kljub vsem izboljšavam in pohitritvam, ki jih danes najdemo v modernih spletnih brskalnikih, je hitrost izvajanja programa napisanega v programskem jeziku Javascript, še vedno bistveno počasnejša. Razni testi kajžejo, da je ekvivalenten program napisan v programskem jeziku C++ lahko tudi do 5 krat hitrejši.
 
-S pomočjo tehnologij, kot je ASM.js [link na del diplome o ASM.js] je možno Javascript program pohitriti, vendar je kljub temu povprečna hitrost izvajanja za dvakrat počasnejša od ekvivalentnega C++ programa.
+S pomočjo tehnologij, kot je ASM.js \ref{sec:asm} je možno Javascript program pohitriti, vendar je kljub temu povprečna hitrost izvajanja za dvakrat počasnejša od ekvivalentnega C++ programa.
 
 Gledano izključno iz vidika hitrosti izvajanja, bo Javascript najbrž vedno manj primeren od klasičnih jezikov.
 
@@ -102,9 +102,9 @@ Gledano izključno iz vidika hitrosti izvajanja, bo Javascript najbrž vedno man
 
 V8-gl je knjižnica, ki omogoča razvoj grafičnih aplikacij za namizne računalnike v jeziku Javascript. Knjižnica programerju nudi Javascript vmesnik do OpenGL APIja. Njen glavni cilj je narediti bogato orodje, ki bo olajšalo delo z 2D in 3D grafiko.
 
-Knjižnica je trenutno še globoko v razvoju in zaenkrat stabilna verzija še ni bila izdana. OpenGL ES2.0 povezave so že delujoče in na voljo za uporabo. To pomeni, da lahko delujočo WebGL prenesemo na V8-gl in se znebimo odvisnosti od brskalnika. Še vedno veljajo enake omejitve s hitrostjo izvajanja, kot veljajo znotraj brskalnika, vendar nam ni potrebno več skrbeti glede delovanja v različnih brskalnikih.
+Knjižnica je trenutno še globoko v razvoju in zaenkrat stabilna verzija še ni bila izdana. OpenGL ES 2.0 povezave so že delujoče in na voljo za uporabo. To pomeni, da lahko delujočo WebGL prenesemo na V8-gl in se znebimo odvisnosti od brskalnika. Še vedno veljajo enake omejitve s hitrostjo izvajanja, kot veljajo znotraj brskalnika, vendar nam ni več potrebno skrbeti glede delovanja v različnih brskalnikih.
 
-Delo poteka tudi na prevedbi knjižnice tudi na sistema iOS in Android. To bi omogočilo bolj konsistentno medplatformno delovanje aplikacije po več platformah, kot ga danes ponujajo različni spletni brskalniki.
+Delo poteka tudi na prevedbi knjižnice za sistema iOS in Android. To bi omogočilo bolj konsistentno medplatformno delovanje aplikacije po več platformah, kot ga danes ponujajo različni spletni brskalniki.
 
 \subsection{LycheeJS}
 
@@ -113,24 +113,27 @@ Najbolj perspektivna uporaba V8-gl knjižnice je trenutno projekt LycheeJS. Lych
 Ker se LycheeJS zanaša na V8-gl, veljajo enake omejitve pri uporabi OpenGL ES2.0 APIja kot tudi pri V8-gl. LycheeJS je zgolj ogrodje zgrajeno nad V8-glom, ki programerju omogoči lažje delo na svoji aplikaciji. Med prednostmi, ki jih LycheeJS prinaša so enoten vmesnik za detekcijo vhoda uporabnikov, kot tudi enoten vmesnik za predvajanje zvočnih datotek. Poleg tega ima LycheeJS vgrajena tudi orodja za pakiranje aplikacij, tako da brez večjega truda svojo spletno aplikacijo zapakiramo za različne platforme. Trenutno podprte platforme so spletne aplikacije, vtičniki za brskalnik Google Chrome ter Android aplikacija.
 
 \section{xamarin}
+\label{sec:xamarin}
 
-Xamarin nam omogoča, da našo aplikacijo napišemo v programskem jeziku C\#, do APIjev domorodnih platform pa dostopamo. C\# prevajalnik našemu programu doda .NET runtime (Mono) in proizvede izvedljiv ARM program, ki je lahko zapakiran kot iOS aplikacija ali pa kot Android aplikacija.
+Xamarin nam omogoča, da našo aplikacijo napišemo v programskem jeziku C\#, do programskih vmesnikov domorodnih platform pa dostopamo preko posebne knjižnice. C\# prevajalnik našemu programu doda .NET runtime (Mono) in proizvede izvedljiv ARM program, ki je lahko zapakiran kot iOS aplikacija ali pa kot Android aplikacija.
 
 Na ta način lahko Android in iOS aplikacije delijo izvorno kodo. 
 
-Xamarin kodo prevede v domorodno izvedljivo binarno datoteko za posamezno platformo. Izvajanje te domorodne je hitro in ni vidnih vplivov na hitrost izvajanja. Koda nam sicer prinese dodatnih 2.5MB podpisa...
+Xamarin kodo prevede v domorodno izvedljivo binarno datoteko za posamezno platformo. Izvajanje te domorodne je hitro in ni vidnih vplivov na hitrost izvajanja. Koda nam sicer prinese dodatnih 2.5MB podpisa, vendar to danes ne predstavlja večjega problema.
 
 Kako točno Xamarin C\# prevede v domorodno aplikacijo ni dostopno, saj je to del njihovega zaprtega sistema. 
 
-Xamarin temelji na odprtokodni verziji .NET ogrodja - Mono, ki deluje na večini platform, ki so v uporabi danes (Linux, Unix, FreeBSD, MacOSX). Za iOS Xamarinov lasten AOT (ahead of time) prevajalnik prevede C\# kodo v ARM zbirni jezik. Na operacijskem sistemu Android pa xamarinov prevajalnik prevede kodo v vmesni jezik (IL), ki se nato prevede ob pravem času (JIT), ko se aplikacija zažene. V obeh primerih Xamarin poskrbi za alociranje spomina, memory allocation, garbage collection, underlying platform interop, etc. 
+Xamarin temelji na odprtokodni verziji .NET ogrodja - Mono, ki deluje na večini platform, ki so v uporabi danes (Linux, Unix, FreeBSD, MacOSX). Za iOS Xamarinov lasten AOT (ahead of time) prevajalnik prevede C\# kodo v ARM zbirni jezik. Na operacijskem sistemu Android pa xamarinov prevajalnik prevede kodo v vmesni jezik (IL), ki se nato prevede ob pravem času (JIT), ko se aplikacija zažene. V obeh primerih Xamarin poskrbi za alociranje spomina, sproščanje pomnilnika... %underlying platform interop, etc. 
 
-\section{libgdx\cite{libgdx}}
+Pisanje grafičnih aplikacij z Xamarinom je sicer mogoče, vendar nam Xamarin pri razvoju le malo pomaga. Kot orodje je Xamarin veliko bolj zanimiv, saj nam omogoča, da naše aplikacije spravimo na iOS, kot bomo videli v nadaljevanju.
 
-Libgdx je ogrodje za medplatformni razvoj grafičnih aplikacij napisano v Javi. Knjižnica abstrahira razlike med namiznimi aplikacijami, Androidom, iOSom in HTML5 ter gradi na odprtih standardih, kot je OpenGL ES/WebGL.
+\section{libgdx}
+\label{sec:libgdx}
+Libgdx\cite{libgdx} je v Javi napisano ogrodje za medplatformni razvoj grafičnih aplikacij. Knjižnica abstrahira razlike med namiznimi aplikacijami, Androidom, iOSom in HTML5 ter gradi na odprtih standardih, kot je OpenGL ES/WebGL.
 
-LibGDX omogoča hitro prototipiranje, saj je razvoj mobilnih aplikacij možen na namizju. V pravilnost delovanja aplikacije se lahko prepričamo iz namiznega računalnika in šele nato zgradimo paket. 
+LibGDX omogoča hitro prototipiranje, saj je razvoj mobilnih aplikacij možen na namizju. V pravilnost delovanja aplikacije se lahko prepričamo iz namiznega računalnika in šele nato zgradimo paket za želeno mobilno napravo. 
 
-Prednost tega pristopa so krajši nalagalni časi aplikacije. Grajenje iOS ali Android paketa traja nekaj časa (Dex, package), potem pa je potrebno aplikacijo preko USB kabla prenesti na dejansko napravo. Razvoj grafično intenzivnih aplikacij je z uporabo Android emulatorja na primer skorajda nemogoče, saj le ta niti ne podpira OpenGL ES2.0. Vsi ti koraki na sodobnem računalniku sicer ne trajajo več kot eno minuto, ampak v primerjavi z poganjanjem .jar datoteke iz namizja (manj kot 5 sekund) prednost razvoja iz namizja precej zniža čas, ki je potreben za razvoj aplikacije.
+Prednost tega pristopa so krajši nalagalni časi aplikacije med razvijanjem. Grajenje iOS ali Android paketa traja nekaj časa (Dex, package), potem pa je potrebno aplikacijo preko USB kabla prenesti na dejansko napravo. Razvoj grafično intenzivnih aplikacij je z uporabo Android emulatorja na primer skorajda nemogoče, saj le ta niti ne podpira OpenGL ES 2.0. Vsi ti koraki na sodobnem računalniku sicer ne trajajo več kot eno minuto, ampak v primerjavi z poganjanjem .jar datoteke iz namizja (manj kot 5 sekund) prednost razvoja iz namizja precej zniža čas, ki je potreben za razvoj aplikacije.
 
 Poleg hitrejšega mrzlega zagona aplikacije je razvoj na namizju hitrejši tudi zaradi vročega izmenjevanje kode (code hot swapping). Vroče izmenjevanje kode je proces, ko del kode, ki teče na JVM zamenjamo z novim delom kode med tem ko aplikacija teče. S tem se izognemo ponovnemu zaganjanju aplikacije. Dodatna prednost je, da nam ni potrebno na ponovno nastavljati stanja, v katerem se je aplikacija nahajala preden smo naredili spremembo kode. Vroče izmenjevanje je instantno in programer dobi takojšen odziv na spremembe, ki jih je naredil, kar precej izboljša čas, ki je potreben za razvoj aplikacije.
 
@@ -138,67 +141,100 @@ Določeni deli ogrodja so bili napisani s pomočjo JNI (Java Native Interface, J
 
 LibGDX omogoča razvoj aplikacij za Widows, Linux, Mac OS X, Android 1.5+, iOS, Java Applet, Javascript /WebGL. 
 
-TODO: Za razvoj iOS je potrebna Xamarin. LibGDX s pomočjo LLVM Java kodo spremeni v C\# kompatibilno. Ta C\# koda pa potem xamarin prevajalnik prevede v domorodno ARM kodo.
+Za grajenje iOS paketa je potrebno orodje Xamarin. LibGDX s pomočjo LLVM Java kodo spremeni v C\# kompatibilno, ki jo potem Xamarin prevajalnik prevede v domorodno ARM kodo.
 
 Projekt LibGDX je odprtokoden in dostopen na internetu.
 
-\section{playn\cite{playn}}
-
-PlayN je ogrodje za razvoj grafično intenzivnih aplikacij na večih platformah. Podprte platforme so namizni računalniki (Java), iOS, Android, HTML5 in Flash.
+\section{playn}
+\label{sec:playn}
+PlayN\cite{playn} je ogrodje za razvoj grafično intenzivnih aplikacij na večih platformah. Podprte platforme so namizni računalniki (Java), iOS, Android, HTML5 in Flash.
 
 Vmesnik je napisan v programskem jeziku Java, na voljo pa imamo vse prednosti, ki smo jih omenili že pri uporabi LibGDX. Našo aplikacijo lahko razvijamo na namiznem računalniku, kjer lahko uporabljamo tudi vroče izmenjavanje kode. 
 
-Za izvoz na različne platforme lahko uporabimo ali orodje Ant ali pa Maven. Večjih razlik med obema orodjema ni, oba pa omogočata preprost način grajenje domorodnih paketov za Android.
+Za izvoz na različne platforme lahko uporabimo ali orodje Ant ali pa Maven. Večjih razlik med obema orodjema ni, oba pa omogočata preprost način grajenja domorodnih paketov za Android, iOS, HTML5.
 
 \subsection{GWT}
 
-Izvoz aplikacije v HTML5 je mogoč z uporabo orodja GWT (Google Web Toolkit), ki je kot navaja tudi ime orodja, plod dela zaposlenih pri podjetju Google. GWT je razvijalsko orodje, za grajenje kompleksnih aplikacij, ki tečejo v brskalniku. Celoten paket vsebuje Java API knjižnico, prevajalnik in strežnik za razvijanje aplikacije.
+Izvoz aplikacije v HTML5 je mogoč z uporabo orodja GWT (Google Web Toolkit), ki je kot navaja tudi ime orodja, plod dela zaposlenih pri podjetju Google. GWT je razvijalsko orodje, za grajenje kompleksnih aplikacij, ki tečejo v brskalniku. Celoten paket vsebuje knjižnico z Java programskim vmesnikom, prevajalnik in strežnik za razvijanje aplikacije.
 
 GWT program napisan v jeziku Java prevede v optimiziran Javascript. Prevajalnik upošteva prednosti in slabosti posameznih brskalnikov in optimizira za vsak brskalnik posebej. Poleg brskalnikov za namizje je prevedeni Javascript optimiziran tudi za mobilne brskalnike, tako da aplikacija napisana s pomočjo GWTja deluje hitreje tudi na mobilnih napravah.
 
-Poleg specifičnih optimizacij za različne brskalnike prevajalnik tudi odstrani mrtvo kodo, optimizira Stringe, in-lining methods.
-
-
+Poleg specifičnih optimizacij za različne brskalnike prevajalnik tudi odstrani mrtvo kodo, optimizira nize znakov in metode pretvori v enovrstično varianto.
 
 \subsection{iOS}
 
-Tudi grajenje iOS paketa poteka na podoben način kot pri LibGDX, z uporabo Xamarin licence.
+Grajenje iOS paketa poteka na podoben način kot pri LibGDX, z uporabo Xamarin licence.
 
 \subsection{Primerjava z LibGDX}
 
-Razlika med LibGDX in PlayN se pokaže predvsem v uporabi vmesnikov. PlayN podpira nekoliko več platform in 2D API je nekoliko lažji za uporabo. Delo z 3D apijem (in dostop do domorodnih OpenGL ES funkcij) pa je precej lažje z uporabo LibGDX knjižnice. 
+Razlika med LibGDX in PlayN se pokaže predvsem v uporabi vmesnikov. PlayN podpira nekoliko več platform in 2D programski vmesnik je nekoliko lažji za uporabo. Delo z 3D programskim vmesnikom (in dostop do domorodnih OpenGL ES funkcij) pa je precej lažje z uporabo LibGDX knjižnice. 
 
-Projekt je odprtokoden razvijajo pa ga zaposleni pri Googlu.
+\section{Unity}
 
-\section{Unity\cite{unity}}
+Unity3D\cite{unity} je orodje za izdelovanje medplatformnih grafično intenzivnih aplikacij. Poleg mobilnih naprav (iOS, Android, BlackBerry, WinPhone 8) ter vseh glavnih namiznih operacijskih sistemov (Windows, MacOS, Linux), orodje omogoča izdelovanje aplikacij tudi za igralne konzole (Xbox is PS3). Orodje je sestavljeno iz dveh glavnih delov - pogon in integrirano okolje za razvijanje.
 
-Unity3D je orodje za izdelovanje medplatformnih grafično intenzivnih aplikacij. Poleg mobilnih naprav (iOS, Android, BlackBerry, WinPhone 8) ter vseh glavnih namiznih operacijskih sistemov (Windows, MacOS, Linux), orodje omogoča izdelovanje aplikacij tudi za igralne konzole (Xbox is PS3). Orodje je sestavljeno iz dveh glavnih delov - engine in integrirano okolje za razvijanje.
+\subsection{Pogon}
 
-\subsection{pogon}
+Za risanje na zaslon Unity uporablja grafični vmesnik Direct3D (na platformi Windows in Xbox) in OpenGL ES (iOS, Android). 
 
-Za risanje na zaslon Unity uporablja grafični vmesnik Direct3D (na platformi Windows in Xbox), OpenGL ES (iOS, Android). 
-
-\subsection{integrirano okolje za razvijanje} 
-
+\subsection{Integrirano okolje za razvijanje} 
 
 Unity je razvojno okolje, ki nam omogoča razvoj grafično intenzivnih aplikacij in izvoz za različne platforme. Za Windows, OSX in Linux je izvoz brezplačen, za iOS in Android pa je avtorjem potrebno plačati.
 
-\section{Parse\cite{parse}}
 
-Parse C\# stuff
+\section{Programski jezik Haxe}
+\label{sec:haxe}
+Programski jezik Haxe je bil ustvarjen z razlogom, da bi olajšal razvoj medplatformnih aplikacij. Prevajalnik zna izvorno kodo prevesti na veliko različnih platform. Izvorna koda napisana v jeziku Haxe je lahko prevedena v JavaScript, Flash, NekoVM, PHP, C++, C\# in Java, kar pokrije večji del platform tudi iOS in Android.
+
+Jezik Haxe temelji na Cju in se zaradi podobnosti drugim jezikom (Java, Javascript, ActionScript) ni težko naučiti. Haxe je strogo tipiziran jezik, kar pomeni, da prevajalnik že med prevajanjem programa lahko odkrije določene vrste napak. Na voljo je tudi inferenca tipov, generiki, function closures itd. 
+
+Jezik je odprotokoden in prost za uporabo tako za odprte kot komercialne projekte.
 
 \section{C++}
 
-C++ dostopen povsod
+C++ dostopen povsod. Linux, iOS, OSX in Windows imajo domorodno podporo za C++, Android pa C++ podpira s pomočjo Java JNI vmesnika. Uporaba jezika C++ za razvoj aplikacij na mobilnih paltformah nam omogoči dostop do sistema za grafiko (OpenGL, oz. Direct3D na Windows), ne pa tudi do elementov za uporabniški vmesnik. Le te praviloma lahko uporabljamo samo iz domorodnih programskih jezikov za določeno platformo ali pa s pomočjo orodij kot je ObjectiveC++, .NET most in Java JNI.
 
-\section{Programski jezik Haxe}
-\section{Ogre}
-!!!
-\section{Marmelade}
+Značilnost grafično intenzivnih aplikacij je v tem, da za svoje delovanje ne potrebujejo veliko elementov za uporabniški vmesnik, saj večinoma tečejo v celozaslonskem načinu. Zato problem iz prejšnjega odstavka ni tako pereč, še posebej, če se zavedamo prednosti, ki jih pridobimo z uporabo C++. 
+
+Prednosti vključujejo eno programsko kodo aplikacije za vse platforme. Le te ni potrebno prevajati v druge jezike, kot smo videli pri [\ref{sec:libgdx}][\ref{sec:haxe}][\ref{sec:playn}] hkrati pa tudi nimamo problemov z učinkovitostjo in slabo podprtostjo [\ref{sec:2dcanvas}][\ref{sec:WebGL}].
+
+\subsection{OGRE}
+
+OGRE (Object-Oriented Graphics Rendering Engine) je pogon za upodabljanje napisan v programskem jeziku C++. Dobra lastnost pogona je, da nam ponudi enoten vmesnik za OpenGL in Direct3D. OGRE podpira večino različnih sistemov Linux, Windows (tudi Phone in RT), OSX, iOS in Android.
+
+Prednost OGRE pred drugimi podobnimi projekti je, da ima zelo dobro dokumentacijo pa tudi na splošno je pogon dobro zamišljen in konsistenten.
+
+OGRE ima preprost objektno orientiran vmesnik, ki poenostavi delo, ki je potrebno za generiranje 3D scen. Olajša nam tudi delo z 
+
+Ogrodje je stabilno in se še vedno aktivno razvija. Tudi razgibano publiko ima.
+
+\section{Marmalade}
 % http://www.madewithmarmalade.com/
+
+Marmelade je zanimivo orodje, ki nam omogoča pisanje medplatformnih aplikacij v jeziku C++, HTML5 ali pa s programskim jezikom Lua.
+
+Za razliko od drugih orodij Marmalade ni na voljo brezplačno, preizkusimo lahko samo 30 dnevno verzijo, potem pa moramo kupiti licenco. Cena najbolj osnovne licence, ki nam omogoča grajenje aplikacij za platforme iOS in Android je \$15 na mesec. Če pa bi želeli podpreti še BlackBerry in Windows Phone pa cena naraste na \$499 na leto.
+
+
+
 \section{Monogame}
 
+Monogame je orodoje, ki omogoči poganjanje grafično intenzivnih aplikacij narejenih za Windows in Windows Phone, na drugih platformah. Trenutno podprti sistemi so OSX, Linux, iOS, Android, Play Station Mobile in Ouya. 
+
+Z verzijo 3.0.0 je bila dodana podpora do 3D programskega vmesnika. MonoGame želi popolnoma podpreti XNA 4 programski vmesnik. Za delujočo aplikacijo na iOS in Android se uporablja Xamarin platformo[\ref{sec:xamarin}], kar pomeni, da moramo kupiti dve licenci. Verzija 3.0.0 se osredotoča na funkcije, ki jih prinaša OpenGL ES2.0 medtem ko so prejšne verzije temeljile na OpenGL ES 1.X. Na Windows sistemih se namesto OpenGLa uporablja Direct3D.
+
 \section{Flash}
+
+Od Flash verzije 11 naprej ima predvajalnik podporo za strojno pospeševanje 3D vsebine.
+
+
+\subsection{Stage3D}
+
+Stage3D programski vmesnik nam mogoča strojno pospešeno arhitekturo, ki deluje na večih platformah. 
+
+\subsection{Starling}
+
+Starling je odprotokoden projekt, ki temelji na stage3D. Nad stage3D doda dodatno funkcionalnost kot so sistem za dogodke, podpora partiklom, podpora različnim teksturam, teksturni atlasi, različni načini blendanja, podpora za več dotikov, itd.
 
 \section{QT}
 \label{sec:qt}
