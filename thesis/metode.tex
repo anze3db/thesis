@@ -223,10 +223,13 @@ Monogame je orodoje, ki omogoči poganjanje grafično intenzivnih aplikacij nare
 
 Z verzijo 3.0.0 je bila dodana podpora do 3D programskega vmesnika. MonoGame želi popolnoma podpreti XNA 4 programski vmesnik. Za delujočo aplikacijo na iOS in Android se uporablja Xamarin platformo[\ref{sec:xamarin}], kar pomeni, da moramo kupiti dve licenci. Verzija 3.0.0 se osredotoča na funkcije, ki jih prinaša OpenGL ES2.0 medtem ko so prejšne verzije temeljile na OpenGL ES 1.X. Na Windows sistemih se namesto OpenGLa uporablja Direct3D.
 
-\section{Flash}
+\section{Adobe Flash}
 
-Od Flash verzije 11 naprej ima predvajalnik podporo za strojno pospeševanje 3D vsebine.
+Adobe Flash, znan tudi pod imeni Shockwave Flash in Macromedia Flash, je uporabnikom najbolj poznan v obliki vtičnika za spletne brskalnike. Začetki segajo v leto 1995, ko je bil razvit kot vtičnik za animacije na spletnih straneh. Matično podjetje je nato kupila Macromedia, ki pa se je kasneje prodala Adobeju.   
 
+Od Flash verzije 11 naprej ima predvajalnik podporo za strojno pospeševanje 3D vsebin.
+
+Podpora na mobilnih platformah je slaba, saj iOS Flasha nikoli ni podpiral, na Androidu pa je od verzije 4.0 uradno ni več podprt, neuradno je možno Flash predvajalnik namestiti tudi na Android sistemih 4.1 in 4.2. Zaradi teh slabih smernic Flash ni najbolj primeren za razvoj grafično intenzivnih aplikacij.
 
 \subsection{Stage3D}
 
@@ -239,3 +242,11 @@ Starling je odprotokoden projekt, ki temelji na stage3D. Nad stage3D doda dodatn
 \section{QT}
 \label{sec:qt}
 % http://doc-snapshot.qt-project.org/qt5-stable/qtdoc/windowsce-opengl.html
+
+Projekt QT je medplatformno ogrodje za ustvarjanje aplikacij. Za razvijanje aplikacij sta na voljo C++ in QML, ki je jezik podoben Javascriptu in CSSu.
+
+Za razvijanje aplikacij je na voljo tudi QT Creator, ki je vgrajeno razvijalno okolje.
+
+Qt je možno uporabljati na veliki količini naprav in platform z uporabo različnih CPU arhitektur. QT skupnost podpira naprave Beagleboard [\ref{sec:beagleBone}] in RaspberryPi [\ref{sec:raspberryPi}]. 
+
+IOS in Android sta trenutno eksperimentalno podprta kot možni platformi. Razvija se pa tudi vprašanje o domorodnih QT Android sistemih. % http://qt-project.org/wiki/native-Android-discussion
