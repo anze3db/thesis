@@ -2,25 +2,37 @@
 
 % http://www.alexstjohn.com/WP/2013/07/22/the-evolution-of-direct3d/
 
-Ker je grafični cevovod (tako pri Direct3D, kot pri OpenGLu) z leti postal zelo zapleten in ker je prenašanje podatkov med centralno procesno enoto zahtevna operacija, se pojavlja nova alternativa - pisanje aplikacij direktno na grafičnem čipu. Taka aplikacija lahko teoretično dela na večih platformah s kompatibilno grafično kartico - premestiti bi bilo potrebno samo dele aplikacije, ki imajo opravka z nastavljanjem ogrodja. 
+Ker je grafični cevovod (tako pri Direct3D, kot pri OpenGLu) z leti postal zelo zapleten in ker je prenašanje podatkov med centralno procesno enoto zahtevna operacija, se pojavlja nova alternativa - pisanje aplikacij direktno na grafičnem čipu. Taka aplikacija lahko s kompatibilno grafično kartico dela na večih platformah - premestiti bi bilo potrebno samo dele aplikacije, ki imajo opravka z nastavljanjem ogrodja. 
 
-Tudi nekompatibilnosti med posameznimi grafičnimi proizvajalci bi bilo mogoče odpraviti z uporabo grafičnih pogonov, ki abstrahirajo delovanje posameznih kartic in nam omogočajo enoten programski vmesnik do vseh nastavitev.
+Nekompatibilnosti in razlike med posameznimi grafičnimi grafičnimi karticami bi bilo mogoče odpraviti z uporabo grafičnih pogonov. Tak grafični pogon bi uporabniku ponudil enoten vmesnik API, s katerim bi uporabnik napisal grafično intenzivno aplikacijo. Grafični pogon bi abstrahiral delovanje posameznih kartic in skril razlike pod pokrov. En tak grafični pogon je trenutno v nastajanju, ampak je še precej daleč od uporabne verzije, vseeno pa se splača pogledati namenske programske jezike, ki nam omogočajo izvajanje programske kode na grafičnem procesorju.
 
-Dva primera takšnih splošno namenskih jezikov sta Nvidiina CUDA in Microsoftov AMP programski vmesnik.
+Dva primera takšnih splošno namenskih jezikov sta Nvidiina CUDA in Microsoftov AMP programski vmesnik, omeniti pa je potrebno tudi OpenCL.
 
 \section{CUDA}
 % http://www.nvidia.com/object/cuda_home_new.html
-CUDA je platforma za paralelno procesiranje in programski model, ki ga je iznašla Nvidia. S CUDO lahko drastično povečamo hitrost računanja z uporabo grafične kartice.
+CUDA \cite{cuda} je platforma za paralelno procesiranje in programski model, ki z uporabo grafične kartice omogoča dramatično pohitritev izračunov. Podjetje Nvidia je CUDAo predstavilo leta 2006, danes pa se veliko uporablja na različnih področjih, kot so biologija, kemija, fizika in tako dalje.
 
-\subsection{CUDA na mobilnih platformah}
+\subsection{Logan - CUDA na mobilnih platformah}
 % http://www.pcworld.com/article/212088/article.html
 % http://www.tomshardware.com/news/GPU-Compute-Tegra-GTC-2013-CUDA-Dark-Silicon,21620.html
 % http://gpuscience.com/news/nvidia-tegra-4-gpgpu-and-cuda-support-goes-mobile/
 
+% Nvidia ima tudi načrte, da bi v naslednjih nekaj letih CUDA arhitekturo prenesla tudi na mobilne naprave. To bi pomenilo velik preskok v izrazni moči mobilnih naprav.
 
-Nvidia ima tudi načrte, da bi v naslednjih nekaj letih CUDA arhitekturo prenesla tudi na mobilne naprave. To bi pomenilo velik preskok v izrazni moči mobilnih naprav.
+% Že za četrto generacijo mobilinih GPU procesorjev Tegra 4, se je govorilo, da bodo podpirali CUDAo, vendar so se govorice izkazale kot lažne. Vseeno je bilo potrjeno s strani ljudi, ki delajo pri Nvidiji, da je v razvoju mobilni procesor, ki bo zmožen izvajati CUDA aplikacije. Kdaj točno bo postal na voljo pa lahko samo ugibamo. Do grafično intenzivnih aplikacij pisanih na grafičnem čipu nam torej tudi na mobilnih napravah manjka samo še nekaj let.
 
-Že za četrto generacijo mobilinih GPU procesorjev Tegra 4, se je govorilo, da bodo podpirali CUDAo, vendar so se govorice izkazale kot lažne. Vseeno je bilo potrjeno s strani ljudi, ki delajo pri Nvidiji, da je v razvoju mobilni procesor, ki bo zmožen izvajati CUDA aplikacije. Kdaj točno bo postal na voljo pa lahko samo ugibamo. Do grafično intenzivnih aplikacij pisanih na grafičnem čipu nam torej tudi na mobilnih napravah manjka samo še nekaj let.
+% http://blogs.nvidia.com/blog/2013/07/24/kepler-to-mobile/
+
+Podjetje Nvidia je 24. julija 2013 \cite{cuda-mobile} na spletni strani objavila predogled novega jedra za mobilne naprave. Logan, kot se novo jedro imenuje, bo prvo jedro, ki bo podpiralo CUDA tehnologijo na mobilnih napravah.
+
+Grafična procesna enota projekta Logan, temelji na Nvidijini Kepler arhitekturi. Kepler arhitektura je uporabljena tudi na namiznih računalnikih, prenosnikih, delovnih postajah in super računalnikih.
+
+Kepler bo tudi na mobilnih napravah imel podporo standardom OpenGL4.4 (specifikacija izšla pred kratkim), OpenGL ES 3.0 in DirectX11.
+
+Poleg CUDAe bo Logan na mobilne naprave prinesel tudi vmesnik API, ki bo razvijalcem grafično intenzivnih aplikacij omogočil uporabo teselacije (to je tehnologija, ki spreminja količino izrisanih trikotnikov glede na potrebe), deffered rendering, ki omogoča izračun vplivov različnih luči v sceni v enem samem prehodu procesiranja, napredno glajenje robov (anti aliasing) in vmesnik API za računanje fizike in podobnih simulacij.
+
+Z vsemi temi funkcijami se bo izrisovanje na mobilnih napravah precej približalo zmožnostim namiznih računalnikov. 
+ 
 
 \section{OpenCL}
 
@@ -34,4 +46,3 @@ Obstajajo knjižnice, ki lahko prednosti OpenCLja uporabljajo tudi na mobilnih n
 % http://msdn.microsoft.com/en-us/library/vstudio/hh265137.aspx
 AMP (Accelerated Massive Parallelism) pospeši delovanje C++ programske kode tako, da uporabi prednosti paralelnega izvajanja, ki ga ponujajo grafične procesne enote. AMP trenutno podpira večdimenzionalne sezname, indeksiranje, prenašanje spomina, in tiling.
 
-Tako CUDA kot AMP sta 
