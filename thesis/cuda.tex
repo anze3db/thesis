@@ -2,11 +2,11 @@
 
 % http://www.alexstjohn.com/WP/2013/07/22/the-evolution-of-direct3d/
 
-Ker je grafični cevovod (tako pri Direct3D, kot pri OpenGLu) z leti postal zelo zapleten in ker je prenašanje podatkov med centralno procesno enoto zahtevna operacija, se pojavlja nova alternativa - pisanje aplikacij direktno na grafičnem čipu. Taka aplikacija lahko s kompatibilno grafično kartico dela na večih platformah - premestiti bi bilo potrebno samo dele aplikacije, ki imajo opravka z nastavljanjem ogrodja. 
+Ker je grafični cevovod (tako pri Direct3D, kot pri OpenGLu) z leti postal zelo zapleten in ker je prenašanje podatkov med centralno procesno enoto zahtevna operacija, se pojavlja nova alternativa - pisanje aplikacij direktno na grafičnem čipu. Taka aplikacija lahko s kompatibilno grafično kartico dela na več platformah - premestiti bi bilo potrebno samo dele aplikacije, ki imajo opravka z nastavljanjem ogrodja. 
 
-Nekompatibilnosti in razlike med posameznimi grafičnimi grafičnimi karticami bi bilo mogoče odpraviti z uporabo grafičnih pogonov. Tak grafični pogon bi uporabniku ponudil enoten vmesnik API, s katerim bi uporabnik napisal grafično intenzivno aplikacijo. Grafični pogon bi abstrahiral delovanje posameznih kartic in skril razlike pod pokrov. En tak grafični pogon je trenutno v nastajanju, ampak je še precej daleč od uporabne verzije, vseeno pa se splača pogledati namenske programske jezike, ki nam omogočajo izvajanje programske kode na grafičnem procesorju.
+Nekompatibilnosti in razlike med posameznimi grafičnimi grafičnimi karticami bi bilo mogoče odpraviti z uporabo grafičnega pogona. Tak grafični pogon bi uporabniku ponudil enoten vmesnik API, s katerim bi uporabnik napisal grafično intenzivno aplikacijo. Grafični pogon bi abstrahiral delovanje posameznih kartic in skril razlike pod pokrov. Tak grafični pogon je trenutno samo še zelo daleč od realnosti, vseeno pa se splača pogledati namenske programske jezike, ki nam omogočajo izvajanje programske kode na grafičnem procesorju.
 
-Dva primera takšnih splošno namenskih jezikov sta Nvidiina CUDA in Microsoftov AMP programski vmesnik, omeniti pa je potrebno tudi OpenCL.
+Primeri takšnih splošno namenskih jezikov sta Nvidiina CUDA in Microsoftov AMP, omeniti pa je potrebno tudi OpenCL.
 
 \section{CUDA}
 % http://www.nvidia.com/object/cuda_home_new.html
@@ -36,13 +36,16 @@ Z vsemi temi funkcijami se bo izrisovanje na mobilnih napravah precej približal
 
 \section{OpenCL}
 
-Open Computing Language je ogrodje za pisanje programov, ki se izvajajo na heterogenih platformah, ki so sestavljena iz večih centralno procesnih enot, grafičnih procesnih enot, digitalnih procesorjev signalov in drugih procsorjih.
+Open Computing Language \cite{opencl} je ogrodje za pisanje programov, ki se izvajajo na heterogenih platformah, ki so sestavljena iz večih centralno procesnih enot, grafičnih procesnih enot, digitalnih procesorjev signalov in drugih procesorjev. OpenCL je odprti standard, ki je podprt na različnih napravah, od namiznih računalnikov in delovnih postaj, do mobilnih naprav. Za razvoj standarda skrbi skupina Khronos.
 
 % http://www.accelereyes.com/products/mobile
-Obstajajo knjižnice, ki lahko prednosti OpenCLja uporabljajo tudi na mobilnih napravah. Ena izmed teh knjižnic je tudi AccelerEyes, ki obljublja s to tehnologijo obljublja procesiranja videa v realnem času, hitrejše procesiranje podatkov, boljše komputacije fotografij. AccelerEyes je C/C++ knjižnica s preprostim matričnim programskim vmesnikom. Enaka koda se lahko uporabi na mobilnih platformah. Trenutno podprta sta Android in iOS.
+Obstajajo knjižnice, ki lahko prednosti OpenCLja uporabljajo tudi na mobilnih napravah. Ena izmed teh knjižnic je AccelerEyes \cite{accelereyes}, ki obljublja procesiranje videa v realnem času, hitrejše procesiranje podatkov in boljše izračune nad fotografijami. AccelerEyes je C/C++ knjižnica s preprostim matričnim programskim vmesnikom. Enaka izvorna koda se lahko uporabi tako na namiznih kot na mobilnih platformah. Od mobilnih platform sta trenutno podprta Android in iOS.
 
 \section{AMP}
 
 % http://msdn.microsoft.com/en-us/library/vstudio/hh265137.aspx
-AMP (Accelerated Massive Parallelism) pospeši delovanje C++ programske kode tako, da uporabi prednosti paralelnega izvajanja, ki ga ponujajo grafične procesne enote. AMP trenutno podpira večdimenzionalne sezname, indeksiranje, prenašanje spomina, in tiling.
+AMP (Accelerated Massive Parallelism) je Microsoftofa knjižnica, ki pospeši delovanje C++ programske kode tako, da uporabi prednosti paralelnega izvajanja, ki ga ponujajo grafične procesne enote. 
 
+Implementacija AMP temelji na standardu DirectX11 in je zato dostopna samo na napravah, kjer je le ta podprt (Windows 7 in Windows Server 2008 R2 ali novejše). Na mobilnih napravah trenutno še ni na voljo. Ker pa je standard odprt se pričakuje, da bo vedno več podprtih naprav v prihodnosti. Na platformah, kjer AMP ni podprt potrebno delo namesto grafične procesne enote opravi centralna procesna enota. Tudi v tem primeru lahko uporaba AMPja pohitri delovanje, saj je izvorno kodo pisano za AMP lažje izvajati paralelno.
+
+AMP trenutno podpira večdimenzionalne sezname, indeksiranje, prenašanje spomina, in tiling.
