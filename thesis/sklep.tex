@@ -1,3 +1,21 @@
 \chapter{Sklepne ugotovitve}
-Sklep.
 
+V diplomskem delu smo pregledali načine za medplatformni razvoj grafično intenzivnih aplikacij. Ogledali smo si različne platforme, na katerih je možno izvajati grafično intenzivne aplikacije, in ugotovili, da skoraj vsaka za domorodne aplikacije uporablja svoj programski jezik. 
+
+Prva ovira pri pisanju medplatformnih aplikacij je premostiti razlike med različnimi programskimi jeziki. Naslednja ovira je podprtost knjižnic za dostop do grafične kartice. Na mobilnih napravah so Microsoftovi telefoni in tablice edini, ki ne podpirajo odprtega standarda OpenGL, hkrati pa so to tudi edine naprave na katerih je podprta Direct3D knjižnica.
+
+Premagati ovire z različnimi načini uporabniške vnosa ni bilo zahtevno, saj se dogodki za dotik na večini naprav obravnavajo na podoben način kot klik z miško. Na voljo so pa tudi knjižnice, ki te razlike še dodatno poenostavijo.
+
+Načinov za premostitev razlik med posameznimi platformami je zelo veliko, zato smo se omejili na najbolj popularne metode. Pomemben faktor pri izbiri obravnavanih metod je bila tudi podpora različnim mobilnim napravam. Metod, ki za grajenje aplikacij uporabljajo računalništvo v oblaku, nismo obravnavali. Problem pri takih metodah je, da uporabljeni pristop za doseganje medplatformnosti navadno ni dobro dokumentiran, hkrati pa uporabniki tvegajo, da enkrat v prihodnosti storitev za grajenje aplikacije ne bo več na voljo.  
+
+Izmed vseh obravnavanih metod smo si izbrali štiri, ki smo si jih ogledali bolj podrobno. Na izbor teh metod so vplivale zahteve posamezne aplikacije. Najbolj dovršena izmed vseh metod je bila Unity. Grajenje aplikacij za različne platforme je potekalo brez zapletov, pri vseh drugih metodah pa je bilo potrebno odpravljati napake in skrbno slediti navodilom v priloženi dokumentaciji. Z metodo Unity je tudi sam razvoj potekal zelo gladko zaradi zelo dobrega urejevalnika scene. Druge metode so v primerjavi mnogo bolj primitivne.
+
+Kljub primitivnosti so tudi druge metode vredne ogleda. WebGL skupaj s knjižnico THREE.js omogoča zelo hitro prototipiranje aplikacij. Problem je le v slabi podprtosti WebGL standarda tako na namiznih računalnikih kot tudi na mobilnih napravah.
+
+Grajenje medplatformnih aplikacij v programskem jeziku Java s knjižnico PlayN je bilo dokaj enostavno. Orodja za grajenje na različnih platformah so enostavna za uporabo in navadno zahtevajo samo en dodaten ukaz. Prednost pri uporabi te metode je tudi vroče izmenjevanje izvorne kode, ki močno pohitri razvoj. 
+
+Primer aplikacije napisane v jeziku C++ je bil mogoče še najbolj zahteven. Razlog za to je uporaba jezika C++, ki je nekoliko bolj primitiven, kot vsi ustali uporabljeni programski jeziki. Tudi proces grajenja je z uporabo orodij cmake in make nekoliko bolj zahteven, kot pri ostalih metodah. Prednost te metode je hitrost izvajanja. Na noben drug način na različnih platformah ne dobimo take hitrosti kot z domorodno C++ aplikacijo.
+
+Poleg tradicionalnih metod smo si v diplomskem delu ogledali tudi povsem nov pristop: pisanje medplatformne aplikacije za grafično procesno enoto namesto za centralno procesno enoto. Prednost te metode bi bila potencialna visoka paralelnost izvajanja aplikacije in neposreden dostop do grafične kartice. Za delujoč prototip je potrebno še veliko dela, saj trenutne tehnologije CUDA in OpenCL ne omogočajo vseh potrebnih funkcij. Da bi bil projekt uporaben za končne uporabnike bi bilo pa potrebno premostiti tudi razlike med grafičnimi karticami posameznih razvijalcev. 
+
+V diplomskem delu smo si ogledali tudi projekt ASM.js, ki omogoča prevod C/C++ izvorne kode v podmnožico JavaScripta. Spletni brskalniki lahko to podmnožico JavaScripta še dodatno optimizirajo. Tako se lahko hitrost izvajanja JavaScript aplikacije približa hitrosti izvajanje domorodne aplikacije. Poleg tega je projekt pomemben za nadaljni razvoj brskalnikov, saj so vse možne pohitritve pri prevajanju JavaScripta dobro dokumentirane in standardizirane.
