@@ -1,10 +1,10 @@
 \chapter{Programiranje na grafičnem čipu}
-
+\label{sec:gpu}
 % http://www.alexstjohn.com/WP/2013/07/22/the-evolution-of-direct3d/
 
 Ker je grafični cevovod (tako pri Direct3D, kot pri OpenGLu) z leti postal zelo zapleten in je prenašanje podatkov med centralno procesno enoto in grafično procesno enoto zahtevna operacija, se pojavlja nova alternativa - pisanje aplikacij direktno na grafičnem čipu. Taka aplikacija lahko s kompatibilno grafično kartico dela na več platformah - premestiti je potrebno samo dele aplikacije, ki imajo opravka z nastavljanjem ogrodja. 
 
-Nekompatibilnosti in razlike med posameznimi grafičnimi grafičnimi karticami bi bilo mogoče odpraviti z uporabo grafičnega pogona. Tak grafični pogon bi uporabniku ponudil enoten vmesnik API, s katerim bi uporabnik napisal grafično intenzivno aplikacijo. Grafični pogon bi abstrahiral delovanje posameznih kartic in skril razlike med implementacijami. Tak grafični pogon je še zelo daleč od realnosti, vseeno pa se splača pogledati namenske programske jezike, ki nam omogočajo izvajanje programske kode na grafičnem procesorju.
+Nekompatibilnosti in razlike med posameznimi grafičnimi karticami bi bilo mogoče odpraviti z uporabo grafičnega pogona. Tak grafični pogon bi uporabniku ponudil enoten vmesnik API, s katerim bi uporabnik napisal grafično intenzivno aplikacijo. Grafični pogon bi abstrahiral delovanje posameznih kartic in skril razlike med implementacijami. Tak grafični pogon je še zelo daleč od realnosti, vseeno pa se splača pogledati namenske programske jezike, ki nam omogočajo izvajanje programske kode na grafičnem procesorju.
 
 Primeri takšnih splošno namenskih jezikov so nVidiina CUDA, Microsoftov AMP in OpenCL.
 
@@ -29,7 +29,7 @@ Podjetje nVidia je 24. julija 2013 \cite{cuda-mobile} na spletni strani objavila
 
 Grafična procesna enota projekta Logan, temelji na nVidijini Kepler arhitekturi. Kepler arhitektura je uporabljena tudi na namiznih računalnikih, prenosnikih, delovnih postajah in super računalnikih.
 
-Kepler bo tudi na mobilnih napravah imel podporo standardom OpenGL4.4, OpenGL ES 3.0 in DirectX11.
+Kepler bo tudi na mobilnih napravah imel podporo standardom OpenGL 4.4, OpenGL ES 3.0 in DirectX11.
 
 Poleg orodja CUDA bo Logan na mobilne naprave prinesel tudi vmesnik API, ki bo razvijalcem grafično intenzivnih aplikacij omogočil uporabo teselacije (to je tehnologija, ki aktivno spreminja količino izrisanih trikotnikov glede na potrebe aplikacije), preneseno izrisovanje, ki omogoča izračun vplivov različnih luči v sceni v enem samem prehodu procesiranja, napredno glajenje robov in vmesnik API za računanje fizike in podobnih simulacij.
 
@@ -52,4 +52,4 @@ AMP (Accelerated Massive Parallelism) je Microsoftova knjižnica, ki pospeši de
 
 Implementacija AMP temelji na standardu DirectX11 in je zato dostopna samo na napravah, kjer je le ta podprt (Windows 7 in Windows Server 2008 R2 ali novejše). Na mobilnih napravah trenutno še ni na voljo. Ker pa je standard odprt se pričakuje, da bo vedno več podprtih naprav v prihodnosti. Na platformah, kjer AMP ni podprt potrebno delo namesto grafične procesne enote opravi centralna procesna enota. Tudi v tem primeru lahko uporaba AMPja pohitri delovanje, saj je izvorno kodo pisano za AMP lažje izvajati paralelno na več jedrih.
 
-AMP trenutno podpira večdimenzionalne sezname, indeksiranje, prenašanje spomina, in tiling.
+AMP trenutno podpira večdimenzionalne sezname, indeksiranje, prenašanje spomina itd.

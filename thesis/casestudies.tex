@@ -1,6 +1,8 @@
-\chapter{Študije primerov}
+\chapter{Primeri medplatformnega razvoja aplikacij}
 
-\section{Primer za učenje jezikov}
+Obravnavali smo štiri različne metode PlayN, Unity, WebGL in C++. Za vsako smo razvili aplikacijo in izpostavili prednosti in slabosti metode. Vsi primeri so dostopni na spletnem naslovu \texttt{http://xplatform.psywerx.net/}.
+
+\section{Učenje tujih jezikov}
 
 \subsection{Opis problema}
 
@@ -14,17 +16,17 @@ Primer delovanja aplikacije je na sliki \ref{german}, kjer je viden glavni zaslo
 \begin{center}
 \includegraphics[width=5.5cm]{pic/defg-german.png}
 \end{center}
-\caption{Primer delovanja Nemške verzije na mobilni napravi}
+\caption{Primer delovanja nemške verzije na mobilni napravi}
 \label{german}
 \end{figure} 
 
-Ena izmed glavnih zahtev igre je izpis različnih pisav in posebnih znakov. Poleg prikazane verzije nemščina-angleščina, je bila aplikacija razvita tudi z idejo učenja jezikov, ki ne uporabljajo latinice. Slika \ref{korean} prikazuje primer učenja Korejščine. 
+Ena izmed glavnih zahtev igre je izpis različnih pisav in posebnih znakov. Poleg prikazane verzije nemščina-angleščina, je bila aplikacija razvita tudi z idejo učenja jezikov, ki ne uporabljajo latinice. Slika \ref{korean} prikazuje primer učenja korejščine. 
 
 \begin{figure}
 \begin{center}
 \includegraphics[width=5.5cm]{pic/defg-korean.png}
 \end{center}
-\caption{Primer delovanja Korejske verzije na namiznem računalniku}
+\caption{Primer delovanja korejske verzije na namiznem računalniku}
 \label{korean}
 \end{figure} 
 
@@ -33,7 +35,7 @@ Ena izmed glavnih zahtev igre je izpis različnih pisav in posebnih znakov. Pole
 Izmed vseh obravnavanih metod se nam je zdela najbolj primerna metoda PlayN. Razlogi za izbiro metode so naslednji:
 
 \begin{itemize}
-\item PlayN je odprto koden projekt. V primeru težav lahko pogledamo v izvorno kodo projekta in po potrebi težave odpravimo sami.
+\item PlayN je odprtokoden projekt. V primeru težav lahko pogledamo v izvorno kodo projekta in po potrebi težave odpravimo sami.
 \item Licenca, ki jo PlayN uporablja, ni omejujoča in v primerjavi z nekaterimi plačljivimi metodami, ne zahteva nobenega plačila pred uporabo. To velja tudi, če bi aplikacijo uporabili za komercialne namene.
 \item PlayN je še vedno v aktivnem razvoju, razvijalci pa so odzivni na listi za elektronsko pošto.
 \item PlayN omogoča preprosto podporo dodajanju lastnih pisav, kar je ključnega pomena za podporo jezikom, kot je Korejščina.
@@ -57,6 +59,8 @@ Aplikacija mora biti sposobna izrisovati velik nabor različnih abeced. To dejst
 
 Pomembna zahteva aplikacije je bila tudi delovanje na mobilnih platformah iOS in Android. Tudi tu nam je ogrodje PlayN olajšalo delo, saj postavitev delovnega okolja ni bilo težavno. Proces izvoza aplikacije na različne platforme poteka z uporabo orodja Ant ali Maven. Maven je orodje za upravljanje s projekti, ki skrbi za grajenje projektov in njihovo dokumentacijo \cite{mvn}. PlayN ima že predpripravljene nastavitve za Maven. Za grajenje Android aplikacije moramo izvesti samo preprost ukaz: \texttt{mvn install -Pandroid}. 
 
+Namizna aplikacija ima obliko izvedljive \texttt{jar} datoteke, ki jo moramo pripraviti sami. PlayN nima predpripravljenih navodil za izgradnjo \texttt{jar} datoteke, vendar lahko to preprosto storimo znotraj razvijalskega orodja Eclipse. Pazljivi moramo biti le, da poleg \texttt{jar} datoteke dodamo tudi domorodne knjižnice pritikline LWJGL. LWJGL \cite{lwjgl} omogoča dostop do vmesnikov za OpenGL, OpenCL in OpenAL na operacijskih sistemih FreeBSD, Linux, Mac OSX, Solaris in Windows.
+
 \subsection{Prednosti izbora metode}
 
 Izbrana metoda nam je pomagala izpolniti vse zastavljene cilje. Brez truda smo aplikacijo razvijali na namiznem računalniku in po potrebi preizkusili delovanje na Android napravi. Vmesnik API je razumljiv. Krivulja učenja ni bila strma. 
@@ -67,7 +71,7 @@ Težave smo imeli pri preizkušanju verzije za iOS naprave. Kljub izčrpni dokum
 
 Težave je povzročil tudi prehod iz verzije 1.6 na 1.7, ki se je zgodil med razvojem aplikacije. Nova verzija je malce spremenila način dela s sredstvi in potrebnih je bilo nekaj ročnih popravkov, da sta Android in iOS verziji ponovno delovali.
 
-\section{Primer štiri v vrsto}
+\section{Štiri v vrsto}
 
 Druga testna aplikacija je preprosta igra štiri v vrsto postavljena v treh dimenzijah. Ideja aplikacije je skozi preprosto igro izboljšati uporabnikovo orientacijo v 3D prostoru. Za razliko od standardne igre štiri v vrsto, kjer so zmagovalne kombinacije omejene v vodoravni, navpični in horizontalni smeri, imamo v 3D verziji veliko več možnosti. Poleg osnovnih smeri lahko zmagovalno kombinacijo zgradimo tudi v globino, kar odpre obilico novih kombinacij.
 
@@ -104,7 +108,7 @@ Dogodek \texttt{addBlock} na izbrani valj položi novo barvasto kocko - rdečo a
 
 Ko se igra konča, se pojavi besedilo, ki sporoči zmagovalca in ponudi ponovno igranje. V bolj pogostem primeru, ko poteza ne zaključi igre, se samo zamenja aktivni igralec in igra se nadaljuje. 
 
-Izvoz na različne platforme poteka preko posebnega dialoga za grajenje aplikacije (File - Build Settings...). V dialogu določimo ciljno platformo in nastavitve. S klikom na gumb Build se aplikacija prevede in zgradi za ciljno platformo. V primeru PC, Mac in Linux verzij kot rezultat grajenja dobimo binarno datoteko, ki je izvedljiva na teh platformah. V primeru iOS in Android aplikacije nam lahko Unity pripravi projekt, ki ga nato odpremo v orodjih Eclipse ali Xcode. Tako lahko aplikacijo podpišemo in pripravimo za objavo v trgovinah z mobilnimi aplikacijami.
+Izvoz na različne platforme poteka preko posebnega dialoga za grajenje aplikacije (\texttt{File - Build Settings...}). V dialogu določimo ciljno platformo in nastavitve. S klikom na gumb \texttt{Build} se aplikacija prevede in zgradi za ciljno platformo. V primeru PC, Mac in Linux verzij kot rezultat grajenja dobimo binarno datoteko, ki je izvedljiva na teh platformah. V primeru iOS in Android aplikacije nam lahko Unity pripravi projekt, ki ga nato odpremo v orodjih Eclipse ali Xcode. Tako lahko aplikacijo podpišemo in pripravimo za objavo v trgovinah z mobilnimi aplikacijami. Slika \ref{minplay} prikazuje delovanje aplikaciji na platformi Android.
 
 \subsection{Prednosti metode}
 
@@ -116,7 +120,7 @@ Problem uporabe orodja Unity je učna krivulja. Za razliko od večine ostalih me
 
 Druga slabost metode je v zaprtost sistema. Če tekom razvoja aplikacije naletimo na omejitev orodja nimamo dostopa do izvorne kode, kjer bi to omejitev lahko odpravili. Orodje je sicer na voljo brezplačno, vendar moramo za uporabo naprednih funkcij plačati za licenco. Aplikacije razvite z brezplačno verzijo programa imajo na vseh platformah pred zagonom zaslon z napisom Unity. 
 
-\section{Primer MIN}
+\section{Igra MIN}
 
 Tretji primer je preprosta igra, ki uporablja ortografsko projekcijo. Cilj igre je s sivo kocko odstraniti rdeče kocke. Sivo kocko premika igralec, rdeče kocke pa so postavljene v obliki ugank. Premikanje sive kocke levo, desno, navzgor in navzdol je možno samo v naprej določenih perspektivah. 
 
@@ -136,17 +140,17 @@ Igra na prvi pogled deluje kot preprosta 2D aplikacija, vendar animirani prehodi
 
 Za lažje delo z WebGLom smo uporabili knjižnico THREE.js, ki poenostavi delo s 3D objekti. Uporabili smo tudi knjižnico hammer.js, ki nam pomaga zaznavati geste na dotik občutljivem zaslonu.
 
-\subsection{THREE.js}
+\subsection*{THREE.js}
 
-THREE.js je knjižnica za delo z WebGLom. Ponudi nam pester nabor uporabnih metod, ki močno poenostavijo izrisovanje modelov, določanje materialov, postavitev kamere in raznoraznih luči v sceno. Knjižnica pripravi tudi potrebne senčilnike tako da uporabniku ni potrebno pisati GLSL izvorne kode. Pisanje lastnih senčilnikov vseeno obstaja kot opcija.
+THREE.js je knjižnica za delo z WebGLom. Ponudi nam pester nabor uporabnih metod, ki močno poenostavijo izrisovanje modelov, določanje materialov, postavitev kamere in raznoraznih luči v sceno. Knjižnica pripravi tudi potrebne senčilnike tako, da uporabniku ni potrebno pisati GLSL izvorne kode. Pisanje lastnih senčilnikov vseeno obstaja kot opcija.
 
-Nastavitev ortografske kamere je v knjižnici THREE.js zelo preprosto. Potreben je samo klic posebne metode \texttt{var camera = new THREE.OrthographicCamera( left, right, top, bottom, near, far )} s pravilnimi parametri. Kamero nato dodamo v sceno s klicom funkcije \texttt{scene.add(camera);}. Kamero premikamo po prostoru na podoben način kot vse ostale objekte - z nastavljanjem parametra \texttt{position}, ki ga ima vsaka instanca objekta kamere.
+Nastavitev ortografske kamere je v knjižnici THREE.js zelo preprosto. Potreben je samo klic posebne metode \texttt{THREE.OrthographicCamera(left, right, top, bottom, near, far)} s pravilnimi parametri. Kamero premikamo po prostoru na podoben način kot vse ostale objekte - z nastavljanjem parametra 3D vektorja \texttt{position}. 
 
-V sceno smo dodali tudi dve točkovni luči. Prvo smo postavili na rob igralne plošče tako, da poudari stranice kock v različnih perspektivah. Druga luč pa se nahaja nad igralno površino, da so kocke od zgoraj navzdol dobro osvetljene. Dodajanje točkovnih luči je podobno, kot dodajanje kamere. Najprej ustvarimo objekt \texttt{var cornerLight =  new THREE.PointLight(0xFFFFFF);} nato pa ga dodamo v sceno \texttt{scene.add(cornerLight);}.
+V sceno smo dodali tudi dve točkovni luči. Prvo smo postavili na rob igralne plošče tako, da poudari stranice kock v različnih perspektivah. Druga luč pa se nahaja nad igralno površino, da so kocke od zgoraj navzdol dobro osvetljene. Dodajanje luči v sceno poteka v dveh korakih. Najprej ustvarimo objekt \texttt{var light =  new THREE.PointLight(0xFFF);}, ki ga nato dodamo v sceno \texttt{scene.add(light);}.
 
-Na osebnih računalnikih premikamo kocko z uporabo smernih tipk, prehod med posameznimi perspektivami pa delamo s preslednico. Na mobilnih napravah nimamo na voljo fizične tipkovnice, navidezne pa zasedejo veliko prostora na zaslonu in tudi tipkanje je težavnejše. Zaradi tega na mobilnih napravah kocko uporabljamo s pomočjo gest. Za lažje delo z gestami smo uporabili knjižnico hammer.js.
+Na osebnih računalnikih premikamo kocko z uporabo smernih tipk, prehod med posameznimi perspektivami pa delamo s preslednico. Na mobilnih napravah nimamo na voljo fizične tipkovnice, navidezne pa zasedejo veliko prostora na zaslonu in tudi tipkanje je težavnejše. Zaradi tega na mobilnih napravah kocko uporabljamo s pomočjo gest. Za lažje delo z gestami smo uporabili knjižnico Hammer.js.
 
-\subsection{hammer.js}
+\subsection*{Hammer.js}
 
 Hammer.js je JavaScript knjižnica za zaznavanje gest. Na podlagi standardnih dogodkov, ki jih brskalniki sprožijo ob dotiku zaslona, knjižnica ustvari nove višje nivojske dogodke, ki se sprožijo ob posameznih gestah. Tako se lahko naročimo na te višje nivojske dogodke in smo obveščeni, ko uporabnik aplikacije izvede določeno gesto.
 
@@ -180,13 +184,13 @@ Glavna slabost metode je slaba podpora na mobilnih brskalnikih. Mobilni brskalni
 \label{minchrome}
 \end{figure}
 
-\section{Primer 3D graf}
+\section{3D grafični prikaz aktivnost uporabnikov IRC kanala}
 
 Naš zadnji primer je 3D grafični prikaz aktivnost uporabnikov IRC kanala glede na dan v tednu in uro v dnevu. Graf prikazuje podatke zajete tekom enega leta. Vsak dan ima 24 stolpcev za vsako uro v dnevu. Celoten graf vsebuje 7 vrst po 24 stolpcev, kar je vse skupaj 168 stolpcev. Višina posameznega stolpca ponazarja količino aktivnosti.
 
 Aplikacija je sestavljena iz dveh delov. Prvi del je preprosta skripta napisana v programskem jeziku Python in je zadolžena za pripravo ustreznih podatkov. Linearno se sprehodili čez celoten zapisnik pogovorov in vsako aktivnost zabeležili v 2D polje. 2D polje je sestavljeno iz 168 številskih vrednosti, kjer vsaka vrednost predstavlja količino aktivnosti na določen dan v tednu ob določeni uri. To polje se izvozi v tekstovno datoteko.
 
-Drugi del aplikacije uporabi pripravljene podatke v tekstovni datoteki za izris 3D grafa. Za izrisovanje smo uporabili programski jezik C++ in pogonom gameplay. 
+Drugi del aplikacije uporabi pripravljene podatke v tekstovni datoteki za izris 3D grafa. Za izrisovanje smo uporabili programski jezik C++ in pogon Gameplay. Rezultat aplikacije je viden na sliki \ref{cppgraph}.
 
 \subsection{Uporabljena metoda}
 
@@ -199,18 +203,19 @@ Imenik \texttt{src} vsebuje vso izvorno kodo programa, imenik \texttt{android} p
 \includegraphics[width=12cm]{pic/cpp.png}
 \end{center}
 \caption{3D graf aktivnosti narejen z uporabo gameplay C++ knjižnice}
-\label{minchrome}
+\label{cppgraph}
 \end{figure}
 
-Grajenje aplikacije poteka v dveh fazah. Na najprej poženemo ukaz cmake, ki pripravi vse potrebne knjižnice, ki so potrebne za prevajanje aplikacije na izbrani platformi. Ko orodje cmake opravi svoje delo imamo vse pripravljeno za prevajanje aplikacije z ukazom make, ki pripravi binarno datoteko, ki jo lahko zaženemo. Za platformo android se namesto make ukaza uporabi ukaz ndk-build, ki je del Android paketa za razvoj domorodnih aplikacij.  
+Grajenje aplikacije poteka v dveh fazah. Najprej poženemo ukaz \texttt{cmake}, ki pripravi vse potrebne knjižnice, ki so potrebne za prevajanje aplikacije na izbrani platformi. Ko orodje \texttt{cmake} opravi svoje delo imamo vse pripravljeno za prevajanje aplikacije z ukazom \texttt{make}, ki pripravi binarno datoteko, ki jo lahko zaženemo. Na ta način dobimo izvedljivo binarno datoteko za operacijski sistem Linux. Na operacijskem sistemu Windows se za grajenje aplikacije uporablja integrirano razvijalsko orodje Visual Studio. Ko Gameplay zgenerira nov projekt, pripravi tudi konfiguracijsko datoteko za Visual Studio. Na podoben način se pripravi tudi datoteka za orodje Xcode, ki se uporablja za grajenje aplikacij na operacijskem sistemu Mac OSX. Znotraj projekta za Xcode so tudi navodila za grajenje iOS aplikacij. Za platformo Android se namesto \texttt{make} ukaza uporabi ukaz \texttt{ndk-build}, ki je del Android paketa za razvoj domorodnih aplikacij. \texttt{ndk-build} pripravi knjižnico, do katere lahko dostopamo tudi iz programskega jezika Java.  
 
 \subsection{Prednosti izbora metode}
 
-Gameplay pogon pripravi vse potrebno za razvoj medplatformnih aplikacij. Navodila za grajenje aplikacij na različnih platformah so preprosta in dobro dokumentirana. Uvoz datotek iz grafičnih programov deluje.
+Gameplay pogon pripravi vse potrebno za razvoj medplatformnih aplikacij. Navodila za grajenje aplikacij na različnih platformah so preprosta in dobro dokumentirana.
 
 \subsection{Slabosti izbora metode}
 
 Dokumentacija za uporabo pogona je na določenih mestih pomanjkljiva, tako da je med razvojem potrebno pogledati v izvorno kodo pogona ali priloženih primerov. 
+
 
 
 %Primer Min je bil narejen s pomočjo knjižnice LibGDX. Za svoje delovanje izrablja %zmoglivosti OpenGL ES 2.0. 
