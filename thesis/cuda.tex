@@ -6,7 +6,7 @@ Ker je grafični cevovod (tako pri Direct3D, kot pri OpenGLu) z leti postal zelo
 
 Nekompatibilnosti in razlike med posameznimi grafičnimi karticami bi bilo mogoče odpraviti z uporabo grafičnega pogona. Tak grafični pogon bi uporabniku ponudil enoten vmesnik API, s katerim bi uporabnik napisal grafično intenzivno aplikacijo. Grafični pogon bi abstrahiral delovanje posameznih kartic in skril razlike med implementacijami. Tak grafični pogon je še zelo daleč od realnosti, vseeno pa se splača pogledati namenske programske jezike, ki nam omogočajo izvajanje programske kode na grafičnem procesorju.
 
-Primeri takšnih splošno namenskih jezikov so nVidiina CUDA, Microsoftov AMP in OpenCL.
+Primeri takšnih splošno namenskih jezikov so nVidiina CUDA, Microsoftova AMP in DirectCompute ter OpenCL.
 
 \section{CUDA}
 % http://www.nvidia.com/object/cuda_home_new.html
@@ -53,3 +53,11 @@ AMP (Accelerated Massive Parallelism) je Microsoftova knjižnica, ki pospeši de
 Implementacija AMP temelji na standardu DirectX11 in je zato dostopna samo na napravah, kjer je le ta podprt (Windows 7 in Windows Server 2008 R2 ali novejše). Na mobilnih napravah trenutno še ni na voljo. Ker pa je standard odprt se pričakuje, da bo vedno več podprtih naprav v prihodnosti. Na platformah, kjer AMP ni podprt potrebno delo namesto grafične procesne enote opravi centralna procesna enota. Tudi v tem primeru lahko uporaba AMPja pohitri delovanje, saj je izvorno kodo pisano za AMP lažje izvajati paralelno na več jedrih.
 
 AMP trenutno podpira večdimenzionalne sezname, indeksiranje, prenašanje spomina itd.
+
+%\section{DirectCompute}
+
+%DirectCompute \cite{directcompute} ali senčilnik za računanje je poseben senčilnik definiran v Direct3D programskem vmesniku. Podobno kot ogljiščni in fragmentni senčilnik senčilnik je tudi DirectCompute implementiran z uporabo visoko nivojskega jezika za senčilnike. Senčilnik za računanje omogoči uporabo velike količine paralelnih procesorjev v grafičnih karticah. Na voljo je tudi deljenje spomina in sinhronizacija niti.
+
+%Ker je DirectCompute močno vezan na 
+
+% http://codedivine.org/2013/07/25/directcompute-from-an-opencl-and-cuda-perspective/

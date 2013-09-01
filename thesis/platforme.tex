@@ -2,17 +2,17 @@
 
 Danes lahko grafično intenzivne aplikacije izvajamo na ogromnem naboru različnih naprav. Grafično pospešeno izrisovanje 3D objektov, ki je bilo še pred kratkim omejeno na namizne računalnike in še pred tem na drage delovne postaje, je sedaj možno tudi na mobilnih telefonih in grafičnih tablicah. Razvoj aplikacij za mobilne platforme je nekoliko bolj zahteven, saj moramo poleg okrnjenega nabora funkcionalnosti in slabše strojne zmogljivosti, paziti tudi na porabo baterije.
 
-Omeniti moramo razliko med večplatformnim in medplatformnim razvojem aplikacij. Ker nismo našli točnih definicij teh dveh pojmov, se opiramo na sorodna pojma medjezično in večjezično (npr. iskanje). Medjezično iskanje je iskanje, pri katerem je naravni jezik iskalne zahteve lahko različen od jezika ali jezikov, v katerih je izražena vsebina dokumentov \cite{jezicno}. Podobno je lahko programski jezik, v katerem je napisana medplatformna aplikacija, lahko različen od programskih jezikov, ki jih uporabljajo ciljne platforme. Večplatformna aplikacija je širši pojem, ki zajema tudi medplatformne aplikacije, hkrati pa v to skupino spadajo aplikacije, ki so bile pisane v programskih jezikih posamezne ciljne platforme.
+Omeniti moramo razliko med večplatformnim in medplatformnim razvojem aplikacij. Ker nismo našli točnih definicij teh dveh pojmov, se opiramo na sorodna pojma medjezično in večjezično (npr. iskanje). Medjezično iskanje je iskanje, pri katerem je naravni jezik iskalne zahteve lahko različen od jezika ali jezikov, v katerih je izražena vsebina dokumentov \cite{jezicno}. Podobno je lahko programski jezik, v katerem je napisana medplatformna aplikacija, različen od programskih jezikov, ki jih uporabljajo ciljne platforme. Večplatformna aplikacija je širši pojem, ki zajema medplatformne aplikacije in tudi aplikacije, ki so bile ročno prepisane v programske jezike posameznih ciljnih platform. Medplatformne aplikacije morajo imeti skupen vsaj del izvorne kode na vseh platformah. Če aplikacija temu pogoju ne ustreza, vendar še vseeno deluje na različnih platformah, rečemo, da je večplatforma.
 
 \section{Namizni in prenosni računalniki}
 
 Največ svobode pri razvoju grafično intenzivnih aplikacij je na voljo na namiznih računalnikih. Ti imajo na voljo najboljšo možno strojno opremo in tudi operacijski sistemi so zreli in dovršeni, saj so v razvoju že več deset let. Namizni računalniki nimajo tako strogih omejitev z velikostjo, kot mobilne naprave. Prav nič presenetljivo torej, da so grafično intenzivne aplikacije na tej platformi najbolj domače. 
 
-Namizni računalniki uporabljajo drugačno arhitekturo centralne procesne enote, kot večina mobilnih naprav. Procesorji v namiznih računalnikih so danes večinoma  zgrajeni s CISC arhitekturo (Intel, AMD), medtem ko mobilne naprave večinoma uporabljajo RISC arhitekturo in procesorje podjetij ARM in nVidia. Seveda obstajajo tudi izjeme, kot so na primer tablice s procesorji Intel Atom in PowerPC namizni računalniki.  
+Namizni računalniki uporabljajo drugačno arhitekturo centralne procesne enote kot večina mobilnih naprav. Procesorji v namiznih računalnikih so danes večinoma  zgrajeni s CISC arhitekturo (Intel, AMD), medtem ko mobilne naprave večinoma uporabljajo RISC arhitekturo in procesorje podjetij ARM in nVidia. Seveda obstajajo tudi izjeme, kot so na primer tablice s procesorji Intel Atom in PowerPC namizni računalniki.  
 
 Namizni računalniki so bili zelo dolgo edina platforma, na kateri je bilo možno poganjati grafično intenzivne aplikacije. S pojavom grafičnih kartic se je zmanjšala obremenitev centralne procesne enote. Večji del operacij povezanih z izrisovanjem objektov na zaslonu, se danes izvaja na grafičnih procesnih enotah, ki imajo za ta namen visoko stopnjo paralelizma. 
 
-Prenosni računalniki so po zmogljivostim podobni namiznim računalnikom. Za centralno procesno enoto uporabljajo tudi enako arhitekturo. Grafične procesne enote se na prenosnih računalnikih navadno sicer šibkejše kot na namiznih računalnikih, vendar so razlike minimalne. Razlog je v kompromisu med zmogljivostjo grafične kartice, porabo energije in prostorski omejenosti.
+Prenosni računalniki so po zmogljivosti podobni namiznim računalnikom. Za centralno procesno enoto uporabljajo tudi enako arhitekturo. Grafične procesne enote se na prenosnih računalnikih navadno sicer šibkejše kot na namiznih računalnikih, vendar so razlike minimalne. Razlog je v kompromisu med zmogljivostjo grafične kartice, porabo energije in prostorski omejenosti.
 
 Na namiznih in kasneje na prenosnih računalnikih sta se v začetku 90. let pojavili dve knjižnici za delo s 3D grafiko: OpenGL in Direct3D. Obe ponujata programski vmesnik za komunikacijo z grafično procesno enoto, vendar so razlike med njima precejšne.
 
@@ -50,7 +50,7 @@ Izvorna koda operacijskega sistema je odprta in dostopna pod Apache licenco.
 
 \subsubsection{Jezik za domorodne aplikacije}
 
-Programski jezik za razvoj domorodnih aplikacij na sistemu Android je Java, ki teče na virtualnem stroju Dalvik. Aplikacije napisane v programskem jeziku Java se prevedejo v bitno kodo (angl. bytecode) in se nato iz JVM kompatibilnih $.class$ datotek pretvorijo v $.dex$ datoteke, ki jih Dalvik lahko poganja. Format $.dex$ je prilagojen sistemom, ki imajo omejeno količino pomnilnika in procesorske moči.
+Programski jezik za razvoj domorodnih aplikacij na sistemu Android je Java, ki teče na virtualnem stroju Dalvik. Aplikacije napisane v programskem jeziku Java se prevedejo v bitno kodo (angl. bytecode) in se nato iz JVM kompatibilnih \texttt{.class} datotek pretvorijo v \texttt{.dex} datoteke, ki jih Dalvik lahko poganja. Format \texttt{.dex} je prilagojen sistemom, ki imajo omejeno količino pomnilnika in procesorske moči.
 
 \subsubsection{Podprost grafičnih knjižnic}
 

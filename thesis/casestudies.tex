@@ -16,7 +16,7 @@ Primer delovanja aplikacije je na sliki \ref{german}, kjer je viden glavni zaslo
 \begin{center}
 \includegraphics[width=5.5cm]{pic/defg-german.png}
 \end{center}
-\caption{Primer delovanja nemške verzije na mobilni napravi}
+\caption{Primer delovanja nemške verzije na namiznem računalniku}
 \label{german}
 \end{figure} 
 
@@ -26,7 +26,7 @@ Ena izmed glavnih zahtev igre je izpis različnih pisav in posebnih znakov. Pole
 \begin{center}
 \includegraphics[width=5.5cm]{pic/defg-korean.png}
 \end{center}
-\caption{Primer delovanja korejske verzije na namiznem računalniku}
+\caption{Primer delovanja korejske verzije na mobilni napravi}
 \label{korean}
 \end{figure} 
 
@@ -60,6 +60,8 @@ Aplikacija mora biti sposobna izrisovati velik nabor različnih abeced. To dejst
 Pomembna zahteva aplikacije je bila tudi delovanje na mobilnih platformah iOS in Android. Tudi tu nam je ogrodje PlayN olajšalo delo, saj postavitev delovnega okolja ni bilo težavno. Proces izvoza aplikacije na različne platforme poteka z uporabo orodja Ant ali Maven. Maven je orodje za upravljanje s projekti, ki skrbi za grajenje projektov in njihovo dokumentacijo \cite{mvn}. PlayN ima že predpripravljene nastavitve za Maven. Za grajenje Android aplikacije moramo izvesti samo preprost ukaz: \texttt{mvn install -Pandroid}. 
 
 Namizna aplikacija ima obliko izvedljive \texttt{jar} datoteke, ki jo moramo pripraviti sami. PlayN nima predpripravljenih navodil za izgradnjo \texttt{jar} datoteke, vendar lahko to preprosto storimo znotraj razvijalskega orodja Eclipse. Pazljivi moramo biti le, da poleg \texttt{jar} datoteke dodamo tudi domorodne knjižnice pritikline LWJGL. LWJGL \cite{lwjgl} omogoča dostop do vmesnikov za OpenGL, OpenCL in OpenAL na operacijskih sistemih FreeBSD, Linux, Mac OSX, Solaris in Windows.
+
+Poleg verzije za mobilne naprave in namizne računalnike lahko izvozimo tudi verzijo za spletne brskalnike. Za grajenje spletne aplikacije uporabimo orodje Maven z ukazom \texttt{mvn -Phtml integration-test}. Ukaz nam zažene Jetty spletni strežnik na katerem je dostopna naša aplikacija. Orodje Maven ima tudi dodatek, ki nam aplikacijo pošlje na Googlov AppEngine. Naša verzija za spletne brskalnike deluje zadovoljivo tudi na mobilnih napravah.
 
 \subsection{Prednosti izbora metode}
 
