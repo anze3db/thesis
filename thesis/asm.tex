@@ -1,18 +1,26 @@
-\chapter{Pohitritev izvajanja JavaScript aplikacij}
+\chapter{Pohitritev izvajanja JavaScript\\ aplikacij}
 \label{sec:asm}
-Glavna pomanjkljivost programskega jezika JavaScript pri razvijanju grafično intenzivnih aplikacij je slabša hitrost izvajanja. Zaradi dinamičnih lastnosti jezika obstajajo omejitve pri pohitritvi programov. Ker je hitrost izvajanja pri grafičnih aplikacijah ključnega pomena, si bomo ogledali podmnožico JavaScripta Asm.js, ki obljublja dodatno pohitritev izvajanja JavaScripta v sodobnih brskalnikih.
+Prednost spletnih tehnologij je podprtost na večini platform in preprostost pisanja aplikacij z uporabo tehnologij HTML in CSS. Glavna pomanjkljivost pa je v hitrosti izvajanja JavaScript izvorne kode. Zaradi dinamičnih lastnosti jezika JavaScript obstajajo omejitve pri pohitritvi programov. Ker je hitrost izvajanja pri grafičnih aplikacijah ključnega pomena, si bomo ogledali Asm.js. Asm.js je podmnožica JavaScripta, ki lahko pospeši izvajanje programa v podprtih spletnih brskalnikih.
 
-\section{ASM.js}
+\section{Asm.js}
 
-Asm.js \cite{asm} je podmnožica JavaScripta, ki je nastala kot raziskovalni projekt pri Mozilli. Izvorno kodo JavaScripta je zaradi dinamičnosti jezika zelo težko optimizirati v modernih brskalnikih. Asm.js specifikacijo jezika omeji tako, da brskalniki kodo lažje optimizirajo. Cilj projekta je tudi dokumentirati možne pospešitve JavaScript izvorne kode.
+Asm.js \cite{asm} je nastal kot raziskovalni projekt pri Mozilli. Izvorno kodo JavaScripta je zaradi dinamičnosti jezika zelo težko optimizirati v modernih brskalnikih. Asm.js specifikacijo jezika omeji tako, da brskalniki kodo lažje optimizirajo. Cilj projekta je tudi dokumentirati možne pospešitve JavaScript izvorne kode.
 
-Asm.js ni novost. C++ prevajalnika Emscripten in Mandreel že znata generirati JavaScript kodo, ki jo definira Asm.js. Zaledje, ki ga uporabljata Emscripten in Mandreel sta ponazarjanje spomina s samostojno instanco (angl. singleton) tipiziranega spomina in uporaba bitnih operatorjev za spremenljivke, ki se obnašajo kot cela števila v C++.
+\begin{figure}
+\begin{center}
+\includegraphics[width=12.5cm]{pic/emscr.png}
+\end{center}
+\caption{Prikaz prevajanja C++ programa v JavaScript s pomočjo prevajalnikov Emscripten in Mandreel.}
+\label{emscr}
+\end{figure} 
+
+Asm.js ni novost. C++ prevajalnika Emscripten in Mandreel že znata generirati JavaScript kodo, ki jo definira Asm.js. Potek prevajanja je prikazan na sliki \ref{emscr}. Zaledje, ki ga uporabljata Emscripten in Mandreel sta ponazarjanje spomina s samostojno instanco (angl. singleton) tipiziranega spomina in uporaba bitnih operatorjev za spremenljivke, ki se obnašajo kot cela števila v C++.
 
 Asm.js ni prvi projekt, ki iz različnih jezikov generira JavaScript izvorno kodo. Leta 2006 je podjetje Google izdalo Google Web Toolkit (GWT), ki poleg drugih stvari, prevaja izvorno kodo iz programskega jezika Java v JavaScript. Od leta 2006 se je pojavilo kar nekaj podobnih prevajalnikov za že obstoječe programske jezike (C++, C\#), kot tudi za nove jezike kot so na primer CoffeeScript, TypeScript in Dart.
 
 Problem projektov kot je GWT je v tem, da ni standardne dokumentacije, ki bi razvijalcem JavaScript pogonov omogočilo optimizacije. Zato je tudi na primer znano, da GWT aplikacije v brskalniku Google Chrome tečejo malce hitreje kot v drugih brskalnikih. Razlog je v tem, da sta tako GWT in Chrome razvita pod isto streho in je veliko več interne komunikacije. Le-te pa ostali brskalniki niso deležni. Asm.js dokumentira vse možne pohitritve in navodila za pohitritve da na voljo vsem razvijalcem brskalnikov.
 
-Asm.js se izogiba potencialnih upočasnitev v kodi tako, da nima spremenljivk z mešanimi tipi. Ime knjižnice izvira v dejstvu, da Asm.js izvorna koda izvaja zgolj nizko nivojske izračune, ki so podobni tistim, ki jih izvajajo zbirniki. To pa je točno to, kar preveden C/C++ potrebuje.
+Asm.js se izogiba potencialnih upočasnitev v kodi tako, da nima spremenljivk z mešanimi tipi (angl. mixed types). Ime knjižnice izvira v dejstvu, da Asm.js izvorna koda izvaja zgolj nizko nivojske izračune, ki so podobni tistim, ki jih izvajajo zbirniki. Takšno okolje je pravšnje za zadnji del zaledja za programska jezika C in C++.
 
 Asm.js poskrbi za precej optimizacij v času izvajanja:
 
