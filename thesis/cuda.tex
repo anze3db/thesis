@@ -2,15 +2,15 @@
 \label{sec:gpu}
 % http://www.alexstjohn.com/WP/2013/07/22/the-evolution-of-direct3d/
 
-Ker je grafični cevovod (tako pri Direct3D, kot pri OpenGLu) z leti postal zelo zapleten in je prenašanje podatkov med centralno procesno enoto in grafično procesno enoto draga operacija, se pojavlja nova alternativa - pisanje aplikacij direktno na grafičnem procesorju. Taka aplikacija lahko s kompatibilno grafično kartico dela na več platformah - premestiti je potrebno samo dele aplikacije, ki imajo opravka z nastavljanjem ogrodja. 
+Ker je grafični cevovod (tako pri Direct3D, kot pri OpenGLu) z leti postal zelo zapleten in je prenašanje podatkov med centralno procesno enoto in grafično procesno enoto draga operacija, se pojavlja nova alternativa - pisanje aplikacij direktno na grafičnem procesorju. Taka aplikacija lahko s kompatibilno grafično kartico dela na več platformah, premestiti je potrebno samo dele aplikacije, ki imajo opravka z nastavljanjem ogrodja. 
 
-Nekompatibilnosti in razlike med posameznimi grafičnimi karticami bi bilo mogoče odpraviti z uporabo grafičnega pogona. Tak grafični pogon bi uporabniku ponudil enoten vmesnik API, s katerim bi uporabnik napisal grafično intenzivno aplikacijo. Grafični pogon bi abstrahiral delovanje posameznih kartic in skril razlike med implementacijami. Tak grafični pogon je še zelo daleč od realnosti, vseeno pa se splača pogledati namenske programske jezike, ki nam omogočajo izvajanje programske kode na grafičnem procesorju.
+Nekompatibilnosti in razlike med posameznimi grafičnimi karticami bi bilo mogoče odpraviti z uporabo grafičnega pogona. Tak grafični pogon bi uporabniku ponudil enoten vmesnik API, s katerim bi uporabnik napisal grafično intenzivno aplikacijo. Grafični pogon bi abstrahiral delovanje posameznih kartic in skril razlike med implementacijami. Tak grafični pogon je še zelo daleč od realnosti, vseeno pa je vredno pregledati namenske programske jezike, ki nam omogočajo izvajanje programske kode na grafičnem procesorju.
 
 Primeri takšnih splošno namenskih jezikov so nVidiina CUDA, Microsoftova AMP in DirectCompute ter OpenCL.
 
 \section{CUDA}
 % http://www.nvidia.com/object/cuda_home_new.html
-CUDA \cite{cuda} je platforma za paralelno procesiranje in programski model, ki z uporabo grafične kartice omogoča dramatično pohitritev izračunov. Podjetje nVidia je orodje CUDA predstavilo leta 2006, danes pa se veliko uporablja za znanstvene izračune na različnih področjih fizike, kemije, biologije in drugih.
+CUDA \cite{cuda} je platforma za paralelno procesiranje in programski model, ki z uporabo grafične kartice omogoča dramatično pohitritev izračunov. Podjetje nVidia je orodje CUDA predstavilo leta 2006, danes pa se veliko uporablja za znanstvene izračune na različnih področjih fizike, kemije, biologije in podobnih znanosti.
 
 Za uporabo platforme CUDA lahko izvorno kodo napisano v jezikih C, C++ ali Fortran prevedemo s CUDA prevajalnikom. Za prevajanje C/C++ programov uporabimo prevajalnik nvcc (nVidia's CUDA Compiler), za prevajanje Fortran programov pa prevajalnik CUDA Fortran. Prevajalnika razdelita izvorno kodo na dva dela. Prvi del se izvaja na centralni procesni enoti in se prevede s splošno namenskim prevajalnikom (na primer gcc). Drugi del pa se izvaja na grafični procesni enoti in se prevede z nVidiinim prevajalnikom. Drugi del vključuje knjižnice, ki so prilagojene za izvajanje na grafični procesni enoti. Knjižnice so na voljo za delo s hitro Fourierjevo transformacijo (cuFFT), za računanje z redkimi matrikami (cuSPARSE), za matematične funkcije (CUDA Math Library) in druge. Za jezike Python, Java, Perl, Ruby, Lua, Haskell in Matlab obstajajo ovojnice, ki nam omogočajo dostop CUDA vmesnika API. Za lažje razvijanje aplikacij je na voljo tudi orodjarna CUDA, ki poleg prevajalnika vsebuje še matematične knjižnice in orodja za razhroščevanje in optimizacijo aplikacij.
 
@@ -25,20 +25,20 @@ Za uporabo platforme CUDA lahko izvorno kodo napisano v jezikih C, C++ ali Fortr
 
 % http://blogs.nvidia.com/blog/2013/07/24/kepler-to-mobile/
 
-Podjetje nVidia je 24. julija 2013 \cite{cuda-mobile} na spletni strani objavila predogled novega jedra za mobilne naprave. Logan, kot se novo jedro imenuje, bo prvo jedro, ki bo podpiralo CUDA tehnologijo na mobilnih napravah.
+Podjetje nVidia je 24. julija 2013 \cite{cuda-mobile} na spletni strani objavilo predogled novega jedra za mobilne naprave. Poimenovali so ga Logan in bo prvo jedro, ki bo podpiralo CUDA tehnologijo na mobilnih napravah.
 
-Grafična procesna enota projekta Logan, temelji na nVidijini Kepler arhitekturi. Kepler arhitektura je uporabljena tudi na namiznih računalnikih, prenosnikih, delovnih postajah in super računalnikih.
+Grafična procesna enota projekta Logan temelji na nVidijini Kepler arhitekturi. Kepler arhitektura je uporabljena tudi na namiznih računalnikih, prenosnikih, delovnih postajah in super računalnikih.
 
 Kepler bo tudi na mobilnih napravah imel podporo standardom OpenGL 4.4, OpenGL ES 3.0 in DirectX11.
 
-Poleg orodja CUDA bo Logan na mobilne naprave prinesel tudi vmesnik API, ki bo razvijalcem grafično intenzivnih aplikacij omogočil uporabo teselacije (to je tehnologija, ki aktivno spreminja količino izrisanih trikotnikov glede na potrebe aplikacije), preneseno izrisovanje, ki omogoča izračun vplivov različnih luči v sceni v enem samem prehodu procesiranja, napredno glajenje robov in vmesnik API za računanje fizike in podobnih simulacij.
+Poleg orodja CUDA bo Logan na mobilne naprave prinesel tudi vmesnik API, ki bo razvijalcem grafično intenzivnih aplikacij omogočil uporabo teselacije (tehnologije, ki aktivno spreminja količino izrisanih trikotnikov glede na potrebe aplikacije), preneseno izrisovanje, ki omogoča izračun vplivov različnih luči v sceni v enem samem prehodu procesiranja, napredno glajenje robov in vmesnik API za računanje fizike in podobnih simulacij.
 
-Z vsemi temi funkcijami se bo izrisovanje in uporaba grafične procesne enote na mobilnih napravah precej približalo zmožnostim namiznih računal-nikov. 
+S temi funkcijami se bosta izrisovanje in uporaba grafične procesne enote na mobilnih napravah precej približala zmožnostim namiznih računal-nikov. 
  
 
 \section{OpenCL}
 
-OpenCL (angl. Open Computing Language) \cite{opencl} je ogrodje za pisanje programov, ki se izvajajo na heterogenih platformah, ki so sestavljena iz več centralno procesnih enot, grafičnih procesnih enot, digitalnih procesorjev signalov in drugih procesorjev. OpenCL je odprt standard, ki je podprt na različnih napravah, od namiznih računalnikov in delovnih postaj, do mobilnih naprav. Za razvoj standarda skrbi skupina Khronos.
+OpenCL (angl. Open Computing Language) \cite{opencl} je ogrodje za pisanje programov, ki se izvajajo na heterogenih platformah, ki so sestavljene iz več centralno procesnih enot, grafičnih procesnih enot, digitalnih procesorjev signalov in drugih procesorjev. OpenCL je odprt standard, ki je podprt na različnih napravah, npr. namiznih računalnikih, delovnih postajah in mobilnih napravah. Za razvoj standarda skrbi skupina Khronos.
 
 % http://www.accelereyes.com/products/mobile
 \subsection{Accelereyes}
@@ -50,12 +50,12 @@ Obstajajo knjižnice, ki lahko prednosti OpenCLja uporabljajo tudi na mobilnih n
 % http://msdn.microsoft.com/en-us/library/vstudio/hh265137.aspx
 AMP (Accelerated Massive Parallelism) je Microsoftova knjižnica, ki pospeši delovanje C++ programske kode tako, da uporabi prednosti paralelnega izvajanja, ki ga ponujajo grafične procesne enote. 
 
-Implementacija AMP temelji na standardu DirectX11 in je zato dostopna samo na napravah, kjer je le ta podprt (Windows 7 in Windows Server 2008 R2 ali novejše). Na mobilnih napravah trenutno še ni na voljo. Ker pa je standard odprt se pričakuje, da bo vedno več podprtih naprav v prihodnosti. Na platformah, kjer AMP ni podprt potrebno delo namesto grafične procesne enote opravi centralna procesna enota. Tudi v tem primeru lahko uporaba AMPja pohitri delovanje, saj je izvorno kodo pisano za AMP lažje izvajati paralelno na več jedrih.
+Implementacija AMP temelji na standardu DirectX11 in je zato dostopna samo na napravah, kjer je le-ta podprt (Windows 7 in Windows Server 2008 R2 ali novejše). Na mobilnih napravah trenutno še ni na voljo. Ker pa je standard odprt, se pričakuje, da bo v prihodnosti vedno več naprav podprtih. Na platformah, kjer AMP ni podprt potrebno delo namesto grafične procesne enote opravi centralna procesna enota. Tudi v tem primeru lahko uporaba AMPja pohitri delovanje, saj je izvorno kodo pisano za AMP lažje izvajati paralelno na več jedrih.
 
 AMP trenutno podpira večdimenzionalne sezname, indeksiranje, prena-šanje spomina itd.
 
 \section{DirectCompute}
 
-DirectCompute \cite{directcompute} ali senčilnik za računanje je poseben senčilnik definiran v Direct3D programskem vmesniku. DirectCompute je implementiran z uporabo visoko nivojskega jezika za senčnilnike na podoben način kot ogljiščni in fragmentni senčilnik. DirectCompute omogoči uporabo velike količine paralelnih procesorjev v grafičnih karticah. Na voljo je tudi deljenje spomina s centralno procesno enoto in sinhronizacija niti. DirectCompute zaenkrat še ni podprt na mobilnih napravah.
+DirectCompute \cite{directcompute} ali senčilnik za računanje je poseben senčilnik definiran v Direct3D programskem vmesniku. DirectCompute je implementiran z uporabo visoko nivojskega jezika za senčnilnike na podoben način kot ogljiščni in fragmentni senčilnik. DirectCompute omogoči uporabo velike količine paralelnih procesorjev v grafičnih karticah. Na voljo je tudi deljenje spomina s centralno procesno enoto in sinhronizacija niti. DirectCompute trenutno še ni podprt na mobilnih napravah.
 
 % http://codedivine.org/2013/07/25/directcompute-from-an-opencl-and-cuda-perspective/
